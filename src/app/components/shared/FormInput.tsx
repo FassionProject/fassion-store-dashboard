@@ -1,6 +1,6 @@
 "use client";
 
-import { getCatData } from "services/service";
+import { getCatData } from "@/services/product-service";
 import { Dropdown } from "flowbite-react";
 import Link from "next/link";
 

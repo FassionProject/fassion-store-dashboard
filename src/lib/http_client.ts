@@ -11,20 +11,24 @@ const httpClient = (config: object): AxiosInstance => {
 	return axios.create({ ...defaultConfig, ...config });
 };
 
-const getClient = async (endpoint: string, params?: object): Promise<ReponseData> => {
+const GetClient = async (endpoint: string, params?: object): Promise<ReponseData> => {
 	return await safeRequest(httpClient({ params }).get(endpoint));
 };
 
-const postClient = async (endpoint: string, data: object, params?: object) => {
+const PostClient = async (endpoint: string, data: object, params?: object) => {
 	return await safeRequest(httpClient({ params }).post(endpoint, data));
 };
 
-const putClient = async (endpoint: string, data: object, params?: object) => {
+const PutClient = async (endpoint: string, data: object, params?: object) => {
 	return await safeRequest(httpClient({ params }).put(endpoint, data));
 };
 
-const deleteClient = async (endpoint: string, params: object, data?: object) => {
+const PatchClient = async (endpoint: string, data: object, params?: object) => {
+	return await safeRequest(httpClient({ params }).patch(endpoint, data));
+};
+
+const DeleteClient = async (endpoint: string, params: object, data?: object) => {
 	return await safeRequest(httpClient({ params }).delete(endpoint, data));
 };
 
-export { getClient, postClient, putClient, deleteClient };
+export { GetClient, PostClient, PutClient, DeleteClient, PatchClient };
