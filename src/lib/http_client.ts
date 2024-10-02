@@ -1,12 +1,12 @@
 import axios, { AxiosInstance } from 'axios';
 import { HTTP_BASE_CONFIG } from '@/lib/constants';
-import { ReponseData } from '@/lib/definition';
 import { safeRequest } from '@/utils';
+import { ReponseData } from './definition/api';
 
 const httpClient = (config: object): AxiosInstance => {
-	const httpOptions = {};
+	// const httpOptions = {};
 
-	const defaultConfig = { baseURL: HTTP_BASE_CONFIG.baseURL, timeout: 10000, ...httpOptions };
+	const defaultConfig = { baseURL: HTTP_BASE_CONFIG.baseURL, timeout: 10000 };
 
 	return axios.create({ ...defaultConfig, ...config });
 };

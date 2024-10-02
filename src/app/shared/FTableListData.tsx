@@ -1,5 +1,6 @@
 import { Table } from 'flowbite-react';
 import FTextInput from './FTextInput';
+import { ReponseData } from '@/lib/definition';
 
 type getDummyDataType = () => {
 	productName: string;
@@ -52,9 +53,51 @@ const getDummyData: getDummyDataType = () => {
 			category: 'Accessories',
 			price: 99,
 		},
+		{
+			productName: 'Magic Mouse 2',
+			color: 'Black',
+			category: 'Accessories',
+			price: 99,
+		},
+		{
+			productName: 'Magic Mouse 2',
+			color: 'Black',
+			category: 'Accessories',
+			price: 99,
+		},
+		{
+			productName: 'Magic Mouse 2',
+			color: 'Black',
+			category: 'Accessories',
+			price: 99,
+		},
+		{
+			productName: 'Magic Mouse 2',
+			color: 'Black',
+			category: 'Accessories',
+			price: 99,
+		},
+		{
+			productName: 'Magic Mouse 2',
+			color: 'Black',
+			category: 'Accessories',
+			price: 99,
+		},
+		{
+			productName: 'Magic Mouse 2',
+			color: 'Black',
+			category: 'Accessories',
+			price: 99,
+		},
+		{
+			productName: 'Magic Mouse 2',
+			color: 'Black',
+			category: 'Accessories',
+			price: 99,
+		},
 	];
 };
-const FTableListData = () => {
+const FTableListData = ({ data }: ReponseData['data']['items']) => {
 	return (
 		<div className='flex flex-col gap-4 relative'>
 			<div className='grid grid-cols-3 gap-2 sticky z-10 top-0'>
@@ -97,7 +140,7 @@ const FTableListData = () => {
 				</Table.Body>
 			</Table>
 			<nav
-				className='flex items-center flex-column flex-wrap md:flex-row justify-between pt-4'
+				className='fixed bottom-2 left-[263px] right-2 flex items-center flex-column flex-wrap md:flex-row justify-between p-4 bg-white bg-opacity-50 backdrop-blur-sm rounded-lg border-slate-200 border-[1px]'
 				aria-label='Table navigation'>
 				<span className='text-sm font-normal text-gray-500 dark:text-gray-400 mb-4 md:mb-0 block w-full md:inline md:w-auto'>
 					Showing <span className='font-semibold text-gray-900'>1-10</span> of <span className='font-semibold text-gray-900'>1000</span>

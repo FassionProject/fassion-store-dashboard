@@ -1,9 +1,10 @@
 import { BASE_PRODUCT_ENDPOINT } from '@/lib/constants';
-import { ProductParams, ReponseData } from '@/lib/definition';
+import { ReponseData } from '@/lib/definition/api';
+import { ProductServiceParams } from '@/lib/definition/params';
 import { ProductModel } from '@/lib/model';
 import { GetClient, PatchClient, PostClient } from 'lib/http_client';
 
-export const getProducts = async (productParams: ProductParams): Promise<ReponseData> => {
+export const getProducts = async (productParams: ProductServiceParams): Promise<ReponseData> => {
 	return await GetClient(BASE_PRODUCT_ENDPOINT, productParams);
 };
 

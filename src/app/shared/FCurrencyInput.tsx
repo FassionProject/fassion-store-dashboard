@@ -1,5 +1,5 @@
 import { GeneralInputStyle } from '@/assets/styles/inputStyle';
-import { FInputProps } from '@/lib/definition';
+import { FInputComponentProps } from '@/lib/definition/props';
 import { ChangeEvent, useEffect, useState } from 'react';
 
 const CurrencyInputStyle: { label: string; icon: string; field: string } = {
@@ -8,13 +8,13 @@ const CurrencyInputStyle: { label: string; icon: string; field: string } = {
 	field: `${GeneralInputStyle.field} w-1/2 pl-[38px] text-right`,
 };
 
-const FCurrencyInput = ({ label, placeholder, isRequired, isDisabled, isHidden, isReadonly }: FInputProps) => {
+const FCurrencyInput = ({ label, value, placeholder, isRequired, isDisabled, isHidden, isReadonly }: FInputComponentProps) => {
 	const [inputID, setInputID] = useState('');
 	const [name, setName] = useState('');
-	const [inputValue, setInputValue] = useState('');
+	const [inputValue, setInputValue] = useState(typeof value == 'number' ? value : -999);
 
 	useEffect(() => {
-		const formattedLabel = label.toLowerCase().split(' ').join('-');
+		const formattedLabel = label?.toLowerCase().split(' ').join('-') ?? '_default';
 
 		setInputID(formattedLabel.concat('-id'));
 		setName(formattedLabel.concat('-input'));

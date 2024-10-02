@@ -1,9 +1,10 @@
 import { BASE_PRODUCT_CATEGORY_ENDPOINT } from '@/lib/constants';
-import { ProductCategoryParams, ReponseData } from '@/lib/definition';
+import { ReponseData } from '@/lib/definition/api';
+import { ProductCategoryServiceParams } from '@/lib/definition/params';
 import { ProductCategoryModel } from '@/lib/model';
 import { GetClient, PatchClient, PostClient } from 'lib/http_client';
 
-export const getProductCategories = async (productCategoryParams: ProductCategoryParams): Promise<ReponseData> => {
+export const getProductCategories = async (productCategoryParams: ProductCategoryServiceParams): Promise<ReponseData> => {
 	return await GetClient(BASE_PRODUCT_CATEGORY_ENDPOINT, productCategoryParams);
 };
 

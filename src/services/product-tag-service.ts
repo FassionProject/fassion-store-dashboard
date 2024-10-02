@@ -1,9 +1,10 @@
 import { BASE_PRODUCT_TAG_ENDPOINT } from '@/lib/constants';
-import { ProductTagParams, ReponseData } from '@/lib/definition';
+import { ReponseData } from '@/lib/definition/api';
+import { ProductTagServiceParams } from '@/lib/definition/params';
 import { ProductTagModel } from '@/lib/model';
 import { GetClient, PatchClient, PostClient } from 'lib/http_client';
 
-export const getProductTags = async (productTagParams: ProductTagParams): Promise<ReponseData> => {
+export const getProductTags = async (productTagParams: ProductTagServiceParams): Promise<ReponseData> => {
 	return await GetClient(BASE_PRODUCT_TAG_ENDPOINT, productTagParams);
 };
 

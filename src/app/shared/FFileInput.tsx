@@ -1,4 +1,5 @@
-import { FInputProps } from '@/lib/definition';
+
+import { FInputComponentProps } from '@/lib/definition/props';
 import { useEffect, useState } from 'react';
 
 const fileInputStyle: { label: string; icon: string; field: string; helperText: string } = {
@@ -8,13 +9,13 @@ const fileInputStyle: { label: string; icon: string; field: string; helperText: 
 	helperText: 'mt-1 text-sm text-gray-500',
 };
 
-const FFileInput = ({ label, placeholder, helperText, isRequired, isDisabled, isHidden, isReadonly, isDropzone }: FInputProps) => {
+const FFileInput = ({ label, helperText, isRequired, isDisabled, isHidden, isReadonly, isDropzone }: FInputComponentProps) => {
 	const [inputID, setInputID] = useState('');
 	const [name, setName] = useState('');
 	const [ariaDescribedby, setAriaDescribedby] = useState('');
 
 	useEffect(() => {
-		const formattedLabel = label.toLowerCase().split(' ').join('-');
+		const formattedLabel = label?.toLowerCase().split(' ').join('-') ?? '_default';
 
 		setInputID(formattedLabel.concat('-id'));
 		setName(formattedLabel.concat('-input'));

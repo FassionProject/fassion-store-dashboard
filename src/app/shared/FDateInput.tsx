@@ -1,19 +1,19 @@
 import { GeneralInputStyle } from '@/assets/styles/inputStyle';
-import { FInputProps } from '@/lib/definition';
+import { FInputComponentProps } from '@/lib/definition/props';
 import { useEffect, useState } from 'react';
 
-const NumberInputStyle: { label: string; icon: string; field: string } = {
+const DateInputStyle = {
 	icon: `${GeneralInputStyle.icon} pl-3 text-textColor-SecondaryText`,
 	label: `${GeneralInputStyle.label} text-textColor-SecondaryText`,
-	field: `${GeneralInputStyle.field} w-1/3 pl-[38px] text-right`,
+	field: `${GeneralInputStyle.field} w-1/2 pl-[38px]`,
 };
 
-const FNumberInput = ({ label, placeholder, isRequired, isDisabled, isHidden, isReadonly }: FInputProps) => {
+const FDateInput = ({ label, placeholder, isRequired, isDisabled, isHidden, isReadonly }: FInputComponentProps) => {
 	const [inputID, setInputID] = useState('');
 	const [name, setName] = useState('');
 
 	useEffect(() => {
-		const formattedLabel = label.toLowerCase().split(' ').join('-');
+		const formattedLabel = label?.toLowerCase().split(' ').join('-') ?? '_default';
 
 		setInputID(formattedLabel.concat('-id'));
 		setName(formattedLabel.concat('-input'));
@@ -23,18 +23,18 @@ const FNumberInput = ({ label, placeholder, isRequired, isDisabled, isHidden, is
 		<div>
 			<label
 				htmlFor={inputID}
-				className={NumberInputStyle.label}>
+				className={DateInputStyle.label}>
 				{label} {isRequired ? '*' : ''}
 			</label>
 			<div className='relative'>
-				<div className={NumberInputStyle.icon}>
-					<i className='fa-solid fa-arrow-up-9-1'></i>
+				<div className={DateInputStyle.icon}>
+					<i className='fa-solid fa-calendar-days'></i>
 				</div>
 				<input
 					name={name}
-					type='number'
+					type='date'
 					id={inputID}
-					className={NumberInputStyle.field}
+					className={DateInputStyle.field}
 					placeholder={placeholder}
 					required={isRequired}
 					readOnly={isReadonly}
@@ -46,4 +46,4 @@ const FNumberInput = ({ label, placeholder, isRequired, isDisabled, isHidden, is
 	);
 };
 
-export default FNumberInput;
+export default FDateInput;

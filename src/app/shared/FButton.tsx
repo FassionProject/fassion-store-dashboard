@@ -1,7 +1,8 @@
-import { FButtonProps } from '@/lib/definition';
+
+import { FButtonComponentProps } from '@/lib/definition/props';
 import { FButtonStyle } from '@/lib/enums';
 
-const FButton = ({ classStyle, label, type, clickFn }: FButtonProps) => {
+const FButton = ({ classStyle, label, type, clickFn }: FButtonComponentProps) => {
 	const getButtonStyle = (style: FButtonStyle): string => {
 		switch (style) {
 			case FButtonStyle.INFO:

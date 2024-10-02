@@ -1,19 +1,19 @@
 import { GeneralInputStyle } from '@/assets/styles/inputStyle';
-import { FInputProps } from '@/lib/definition';
+import { FInputComponentProps } from '@/lib/definition/props';
 import { useEffect, useState } from 'react';
 
-const DateInputStyle = {
+const TextAreaInputStyle: { label: string; icon: string; field: string } = {
 	icon: `${GeneralInputStyle.icon} pl-3 text-textColor-SecondaryText`,
 	label: `${GeneralInputStyle.label} text-textColor-SecondaryText`,
-	field: `${GeneralInputStyle.field} w-1/2 pl-[38px]`,
+	field: `${GeneralInputStyle.field} w-full min-h-[150px] pl-[38px]`,
 };
 
-const FDateInput = ({ label, placeholder, isRequired, isDisabled, isHidden, isReadonly }: FInputProps) => {
+const FTextAreaInput = ({ label, placeholder, icon, isRequired, isDisabled, isHidden, isReadonly }: FInputComponentProps) => {
 	const [inputID, setInputID] = useState('');
 	const [name, setName] = useState('');
 
 	useEffect(() => {
-		const formattedLabel = label.toLowerCase().split(' ').join('-');
+		const formattedLabel = label?.toLowerCase().split(' ').join('-') ?? '_default';
 
 		setInputID(formattedLabel.concat('-id'));
 		setName(formattedLabel.concat('-input'));
@@ -23,27 +23,23 @@ const FDateInput = ({ label, placeholder, isRequired, isDisabled, isHidden, isRe
 		<div>
 			<label
 				htmlFor={inputID}
-				className={DateInputStyle.label}>
+				className={TextAreaInputStyle.label}>
 				{label} {isRequired ? '*' : ''}
 			</label>
 			<div className='relative'>
-				<div className={DateInputStyle.icon}>
-					<i className='fa-solid fa-calendar-days'></i>
-				</div>
-				<input
+				<div className={TextAreaInputStyle.icon}>{icon ? icon : <i className='fa-solid fa-font'></i>}</div>
+				<textarea
 					name={name}
-					type='date'
 					id={inputID}
-					className={DateInputStyle.field}
+					className={TextAreaInputStyle.field}
 					placeholder={placeholder}
 					required={isRequired}
 					readOnly={isReadonly}
 					hidden={isHidden}
-					disabled={isDisabled}
-				/>
+					disabled={isDisabled}></textarea>
 			</div>
 		</div>
 	);
 };
 
-export default FDateInput;
+export default FTextAreaInput;

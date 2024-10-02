@@ -1,5 +1,5 @@
 export const HTTP_BASE_CONFIG = {
-	baseURL: 'https://catfact.ninja/',
+	baseURL: 'http://fassion.api.fassion.site/',
 };
 
 export const BASE_PRODUCT_ENDPOINT = '/Product';
