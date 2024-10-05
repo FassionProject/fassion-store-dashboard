@@ -14,7 +14,7 @@ const FcButton = ({ classStyle, label, type, href, clickFn }: FButtonComponentPr
 			case FeButtonStyleType.DANGER:
 				return 'focus:outline-none text-white bg-RedButton hover:bg-red-600 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5';
 			case FeButtonStyleType.HELPER:
-				return 'text-textColor-BlackText bg-white border border-primary-100 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5';
+				return 'text-mainTextColor bg-white border border-primary-100 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5';
 			default:
 				return '';
 		}
@@ -25,9 +25,9 @@ const FcButton = ({ classStyle, label, type, href, clickFn }: FButtonComponentPr
 			return (
 				<button
 					type='button'
-					className='text-textColor-BlackText bg-white border border-primary-100 hover:bg-gray-50 font-medium rounded-lg text-sm px-4 py-3 flex gap-4 items-center w-full'
+					className='text-mainTextColor bg-white border border-primary-100 hover:bg-gray-50 font-medium rounded-lg text-sm px-4 py-3 flex gap-4 items-center w-full'
 					onClick={clickFn}>
-					<i className='fa-solid fa-pen-to-square text-textColor-SecondaryText'></i>
+					<i className='fa-solid fa-pen-to-square text-secondaryTextColor'></i>
 					<p>{label}</p>
 				</button>
 			);

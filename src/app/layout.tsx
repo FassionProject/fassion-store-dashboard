@@ -12,7 +12,7 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
 		<html lang='en'>
-			<body className={`${montserrat.className} text-textColor-BlackText`}>{children}</body>
+			<body className={`${montserrat.className} text-mainTextColor`}>{children}</body>
 		</html>
 	);
 }

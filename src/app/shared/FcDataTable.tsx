@@ -34,70 +34,68 @@ const FcDataTable = ({ data }: { data: { items: Array<ProductModel> | null } }) 
 				</div>
 			</div>
 
-			<div className=''>
-				<table className='w-full text-sm text-left text-gray-500 rounded-4 relative'>
-					<thead className={dataTableStyle['table-head']}>
-						<tr>
+			<table className='w-full text-sm text-left text-gray-500 rounded-4 relative'>
+				<thead className={dataTableStyle['table-head']}>
+					<tr>
+						<th
+							scope='col'
+							className='px-6 py-3'>
+							Product name
+						</th>
+						<th
+							scope='col'
+							className='px-6 py-3'>
+							Stock
+						</th>
+						<th
+							scope='col'
+							className='px-6 py-3'>
+							Price
+						</th>
+						<th
+							scope='col'
+							className='px-6 py-3'>
+							Action
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					{data.items == null || data.items.length == 0 ? (
+						<tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700'>
 							<th
-								scope='col'
-								className='px-6 py-3'>
-								Product name
+								scope='row'
+								className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white'>
+								null
 							</th>
-							<th
-								scope='col'
-								className='px-6 py-3'>
-								Stock
-							</th>
-							<th
-								scope='col'
-								className='px-6 py-3'>
-								Price
-							</th>
-							<th
-								scope='col'
-								className='px-6 py-3'>
-								Action
-							</th>
+							<td className='px-6 py-4'>null</td>
+							<td className='px-6 py-4'>null</td>
+							<td className='px-6 py-4'>null</td>
 						</tr>
-					</thead>
-					<tbody>
-						{data.items == null || data.items.length == 0 ? (
-							<tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700'>
+					) : (
+						(data.items as Array<ProductModel>).map(({ name, stock, price }, index) => (
+							<tr
+								key={index}
+								className='bg-white border-b dark:bg-gray-800 dark:border-gray-700'>
 								<th
 									scope='row'
 									className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white'>
-									null
+									{name}
 								</th>
-								<td className='px-6 py-4'>null</td>
-								<td className='px-6 py-4'>null</td>
-								<td className='px-6 py-4'>null</td>
+								<td className='px-6 py-4'>{stock}</td>
+								<td className='px-6 py-4'>${price}</td>
+								<td className='px-6 py-4'>
+									<FcButton
+										type='link'
+										href={`/dashboard/product/${name?.split(' ').join('-')}_${index}`}
+										classStyle={FeButtonStyleType.INFO}
+										label='Edit'
+									/>
+								</td>
 							</tr>
-						) : (
-							(data.items as Array<ProductModel>).map(({ name, stock, price }, index) => (
-								<tr
-									key={index}
-									className='bg-white border-b dark:bg-gray-800 dark:border-gray-700'>
-									<th
-										scope='row'
-										className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white'>
-										{name}
-									</th>
-									<td className='px-6 py-4'>{stock}</td>
-									<td className='px-6 py-4'>${price}</td>
-									<td className='px-6 py-4'>
-										<FcButton
-											type='link'
-											href={`/dashboard/product/${name?.split(' ').join('-')}_${index}`}
-											classStyle={FeButtonStyleType.INFO}
-											label='Edit'
-										/>
-									</td>
-								</tr>
-							))
-						)}
-					</tbody>
-				</table>
-			</div>
+						))
+					)}
+				</tbody>
+			</table>
 
 			<nav
 				className='fixed bottom-2 left-[263px] right-2 flex items-center flex-column flex-wrap md:flex-row justify-between p-4 bg-white bg-opacity-50 backdrop-blur-sm rounded-lg border-slate-200 border-[1px]'

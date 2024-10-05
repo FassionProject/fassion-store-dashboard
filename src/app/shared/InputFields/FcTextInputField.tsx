@@ -1,12 +1,8 @@
-import { GeneralInputStyle } from '@/assets/styles/inputStyle';
-import { FInputComponentProps } from '@/lib/definition/props';
-import { useEffect, useState } from 'react';
+import textInputStyle from 'assets/styles/components/FsInputFields.module.css';
 
-const TextInputStyle = {
-	icon: `${GeneralInputStyle.icon} pl-3 text-textColor-SecondaryText`,
-	label: `${GeneralInputStyle.label} text-textColor-SecondaryText`,
-	field: `${GeneralInputStyle.field} w-full pl-[38px]`,
-};
+import { FInputComponentProps } from '@/lib/definition/props';
+
+import { useEffect, useState } from 'react';
 
 const FcTextInputField = ({ label, name, placeholder, icon, isRequired, isDisabled, isHidden, isReadonly }: FInputComponentProps) => {
 	const [inputID, setInputID] = useState('');
@@ -19,20 +15,19 @@ const FcTextInputField = ({ label, name, placeholder, icon, isRequired, isDisabl
 	}, [label]);
 
 	return (
-		// <div hidden={isHidden}>
-		<div>
+		<div hidden={isHidden ?? false}>
 			<label
 				htmlFor={inputID}
-				className={TextInputStyle.label}>
+				className={textInputStyle['text-field-label']}>
 				{label} {isRequired ? '*' : ''}
 			</label>
 			<div className='relative'>
-				<div className={TextInputStyle.icon}>{icon ? icon : <i className='fa-solid fa-font'></i>}</div>
+				<div className={textInputStyle['text-field-icon']}>{icon ? icon : <i className='fa-solid fa-font'></i>}</div>
 				<input
 					type='text'
 					name={name}
 					id={inputID}
-					className={TextInputStyle.field}
+					className={textInputStyle['text-field-input']}
 					placeholder={placeholder ?? ''}
 					required={isRequired ?? false}
 					readOnly={isReadonly ?? false}

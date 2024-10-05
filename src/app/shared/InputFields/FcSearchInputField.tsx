@@ -3,8 +3,8 @@ import { FInputComponentProps } from '@/lib/definition/props';
 import { useEffect, useState } from 'react';
 
 const TextInputStyle = {
-	icon: `${GeneralInputStyle.icon} pl-3 text-textColor-SecondaryText`,
-	label: `${GeneralInputStyle.label} text-textColor-SecondaryText`,
+	icon: `${GeneralInputStyle.icon} pl-3 text-secondaryTextColor`,
+	label: `${GeneralInputStyle.label} text-secondaryTextColor`,
 	field: `${GeneralInputStyle.field} w-full pl-[38px]`,
 };
 

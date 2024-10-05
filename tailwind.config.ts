@@ -11,10 +11,6 @@ const config: Config = {
 	],
 	theme: {
 		colors: {
-			textColor: {
-				BlackText: '#090918',
-				SecondaryText: '#6e6e80',
-			},
 			primary: {
 				900: '#102a43',
 				800: '#243b53',
@@ -39,6 +35,8 @@ const config: Config = {
 				100: '#f9f2e4',
 				50: '#fff9eb',
 			},
+			mainTextColor: '#090918',
+			secondaryTextColor: '#7b7f8a',
 			BlueButton: '#2c87f2',
 			RedButton: '#f24c4c',
 			YellowButton: '#e1c63d',
@@ -48,22 +46,6 @@ const config: Config = {
 			YellowStar: '#ffc400',
 		},
 		fontSize: { xs: '0.75rem', sm: '0.875rem', base: '1rem', lg: '1.5rem', xl: '2rem' },
-		boxShadow: { 'Base Shadow': '0px 2px 8px 0px rgba(0,0,0,0.16)' },
-		extend: {
-			borderRadius: {
-				0: '0rem',
-				1: '0.0625rem',
-				2: '0.25rem',
-				3: '0.3125rem',
-				4: '0.375rem',
-				DEFAULT: '0.5rem',
-				6: '0.75rem',
-				7: '0.875rem',
-				8: '1rem',
-				9: '1.25rem',
-				10: '62.4375rem',
-			},
-		},
 	},
 	plugins: [plugin()],
 };

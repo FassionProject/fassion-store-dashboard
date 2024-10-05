@@ -1,0 +1,39 @@
+.text-field-label {
+	display: block;
+	margin-bottom: 0.5rem;
+	font-size: var(--fontSize-sm);
+	padding-left: 0.75rem;
+	color: var(--secondary-text);
+}
+
+.text-field-icon {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 1rem;
+    color: var(--secondary-text);
+	display: flex;
+	align-items: center;
+	pointer-events: none;
+}
+
+.text-field-input {
+	display: block;
+	padding-top: 0.75rem; /* py-3: 0.75rem padding atas dan bawah */
+	padding-bottom: 0.75rem;
+	background-color: #f9fafb;
+	border: 1px solid #d9e2ec; /* Border color menggunakan warna custom --primary-100 */
+	font-size: 0.875rem; /* text-sm sesuai dengan font size */
+	color: #7b7f8a; /* Untuk placeholder */
+	border-radius: 0.5rem; /* rounded-lg: border-radius 0.5rem */
+	width: 100%;
+	padding-left: 2.5rem; /* pl-[30.5rem]: padding kiri 30.5rem */
+
+	/* Focus state */
+	outline: none;
+}
+
+.text-field-input:focus {
+	border-color: #3b82f6; /* focus:border-blue-500 */
+	box-shadow: 0 0 0 2px #93c5fd; /* focus:ring-2 focus:ring-blue-300 */
+}
