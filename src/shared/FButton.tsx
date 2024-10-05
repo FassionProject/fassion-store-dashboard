@@ -1,8 +1,8 @@
-
 import { FButtonComponentProps } from '@/lib/definition/props';
 import { FButtonStyle } from '@/lib/enums';
+import Link from 'next/link';
 
-const FButton = ({ classStyle, label, type, clickFn }: FButtonComponentProps) => {
+const FButton = ({ classStyle, label, type, href, clickFn }: FButtonComponentProps) => {
 	const getButtonStyle = (style: FButtonStyle): string => {
 		switch (style) {
 			case FButtonStyle.INFO:
@@ -20,22 +20,44 @@ const FButton = ({ classStyle, label, type, clickFn }: FButtonComponentProps) =>
 		}
 	};
 
-	return type == 'lookup' ? (
-		<button
-			type='button'
-			className='text-textColor-BlackText bg-white border border-primary-100 hover:bg-gray-50 font-medium rounded-lg text-sm px-4 py-3 flex gap-4 items-center w-full'
-			onClick={clickFn}>
-			<i className='fa-solid fa-pen-to-square text-textColor-SecondaryText'></i>
-			<p>{label}</p>
-		</button>
-	) : (
-		<button
-			type={type}
-			className={getButtonStyle(classStyle ?? FButtonStyle.INFO)}
-			onClick={clickFn}>
-			{label}
-		</button>
-	);
+	switch (type) {
+		case 'lookup':
+			return (
+				<button
+					type='button'
+					className='text-textColor-BlackText bg-white border border-primary-100 hover:bg-gray-50 font-medium rounded-lg text-sm px-4 py-3 flex gap-4 items-center w-full'
+					onClick={clickFn}>
+					<i className='fa-solid fa-pen-to-square text-textColor-SecondaryText'></i>
+					<p>{label}</p>
+				</button>
+			);
+
+		case 'link':
+			return clickFn == undefined || clickFn == null ? (
+				<Link
+					href={`${href}`}
+					className={getButtonStyle(classStyle ?? FButtonStyle.INFO)}>
+					{label}
+				</Link>
+			) : (
+				<button
+					type='button'
+					className={getButtonStyle(classStyle ?? FButtonStyle.INFO)}
+					onClick={clickFn}>
+					{label}
+				</button>
+			);
+
+		default:
+			return (
+				<button
+					type={type}
+					className={getButtonStyle(classStyle ?? FButtonStyle.INFO)}
+					onClick={clickFn}>
+					{label}
+				</button>
+			);
+	}
 };
 
 export default FButton;

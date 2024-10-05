@@ -1,0 +1,20 @@
+.stickyElement {
+	position: sticky;
+	z-index: 10;
+	top: 76px;
+	text-transform: uppercase;
+	font-size: 0.75rem; /* equivalent to text-xs */
+	color: #4b5563; /* equivalent to text-gray-700 */
+	background-color: rgba(240, 242, 245, 0.5); /* equivalent to bg-white with bg-opacity-50 */
+	backdrop-filter: blur(6px); /* equivalent to backdrop-blur-sm */
+}
+
+/* When scrollPosition is greater than 0 */
+.scrolled .sticky-element {
+	top: 76px;
+}
+
+/* When scrollPosition is 0 */
+.sticky-element {
+	top: 0;
+}

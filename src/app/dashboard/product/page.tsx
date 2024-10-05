@@ -1,15 +1,9 @@
 'use client';
 
-import { useContext } from 'react';
-import ProductForm from './components/ProductForm';
-import { ScrollContext } from '../../../hooks/context/ScrollContextProvider';
-// import FLookup from '../shared/FLookup';
-// import FTableListData from '../../shared/FTableListData';
+import ProductList from './components/ProductList';
 
 const ProductListPage = () => {
-	const scrollPosition = useContext(ScrollContext);
-
-	return <ProductForm scrollPosition={scrollPosition} />;
+	return <ProductList />;
 };
 
 export default ProductListPage;

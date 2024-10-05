@@ -2,13 +2,13 @@ import { GeneralInputStyle } from '@/assets/styles/inputStyle';
 import { FInputComponentProps } from '@/lib/definition/props';
 import { useEffect, useState } from 'react';
 
-const PhoneInputStyle: { label: string; icon: string; field: string } = {
+const DateInputStyle = {
 	icon: `${GeneralInputStyle.icon} pl-3 text-textColor-SecondaryText`,
 	label: `${GeneralInputStyle.label} text-textColor-SecondaryText`,
 	field: `${GeneralInputStyle.field} w-1/2 pl-[38px]`,
 };
 
-const FPhoneInput = ({ label, placeholder, isRequired, isDisabled, isHidden, isReadonly }: FInputComponentProps) => {
+const FDateInput = ({ label, placeholder, isRequired, isDisabled, isHidden, isReadonly }: FInputComponentProps) => {
 	const [inputID, setInputID] = useState('');
 	const [name, setName] = useState('');
 
@@ -23,27 +23,27 @@ const FPhoneInput = ({ label, placeholder, isRequired, isDisabled, isHidden, isR
 		<div>
 			<label
 				htmlFor={inputID}
-				className={PhoneInputStyle.label}>
+				className={DateInputStyle.label}>
 				{label} {isRequired ? '*' : ''}
 			</label>
 			<div className='relative'>
-				<div className={PhoneInputStyle.icon}>
-					<i className='fa-solid fa-phone'></i>
+				<div className={DateInputStyle.icon}>
+					<i className='fa-solid fa-calendar-days'></i>
 				</div>
 				<input
 					name={name}
-					type='text'
+					type='date'
 					id={inputID}
-					className={PhoneInputStyle.field}
-					placeholder={placeholder}
-					required={isRequired}
-					readOnly={isReadonly}
-					hidden={isHidden}
-					disabled={isDisabled}
+					className={DateInputStyle.field}
+					placeholder={placeholder ?? ''}
+					required={isRequired ?? false}
+					readOnly={isReadonly ?? false}
+					hidden={isHidden ?? false}
+					disabled={isDisabled ?? false}
 				/>
 			</div>
 		</div>
 	);
 };
 
-export default FPhoneInput;
+export default FDateInput;

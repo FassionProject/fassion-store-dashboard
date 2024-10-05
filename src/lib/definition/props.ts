@@ -16,8 +16,9 @@ export type FInputComponentProps = {
 };
 
 export type FButtonComponentProps = {
-	type: 'button' | 'submit' | 'reset' | 'lookup';
+	type: 'button' | 'submit' | 'reset' | 'lookup' | 'link';
 	label: string;
+	href?: string;
 	classStyle?: FButtonStyle;
 	clickFn?: (param: React.MouseEvent) => void;
 };

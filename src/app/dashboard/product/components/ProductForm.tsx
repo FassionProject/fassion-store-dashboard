@@ -1,10 +1,11 @@
 'use client';
 
 import { FormEvent, useEffect, useState } from 'react';
-import FTextInput from '../../../shared/FTextInput';
-import FButton from '../../../shared/FButton';
+import FTextInput from '../../../../shared/FTextInput';
+import FButton from '../../../../shared/FButton';
 import { FButtonStyle } from '@/lib/enums';
 import { ProductModel } from '@/lib/model';
+import { useRouter } from 'next/navigation';
 
 const ProductForm = ({ scrollPosition }: { scrollPosition: number }) => {
 	const [productFormData, setProductFormData] = useState<ProductModel>({
@@ -16,9 +17,9 @@ const ProductForm = ({ scrollPosition }: { scrollPosition: number }) => {
 		price: 0,
 		stock: 0,
 	});
+	const router = useRouter();
 
 	useEffect(() => {
-		// setFormCredentials(formInputsCredential);
 		// setProductFormData();, ngambil data dari API
 		// assign value ke semua <input/> element dari form submit
 		// bindFormValues(productFormData, '#product-form-element');
@@ -28,7 +29,7 @@ const ProductForm = ({ scrollPosition }: { scrollPosition: number }) => {
 		event.preventDefault();
 
 		const formData = new FormData(event.target as HTMLFormElement);
-		const productData: ProductModel = productFormData;
+		// const productData: ProductModel = productFormData;
 
 		formData.entries().forEach((data) => {
 			if (!data[1]) {
@@ -44,8 +45,14 @@ const ProductForm = ({ scrollPosition }: { scrollPosition: number }) => {
 			<div className={`mb-4 bg-white bg-opacity-10 backdrop-blur-sm flex gap-2 sticky top-0 z-10 p-2 rounded-lg ${scrollPosition > 0 ? 'border-slate-200 border-[1px]' : ''}`}>
 				<FButton
 					label='Simpan'
-					classStyle={FButtonStyle.WARNING}
+					classStyle={FButtonStyle.SUCCESS}
 					type='submit'
+				/>
+				<FButton
+					label='Kembali'
+					classStyle={FButtonStyle.HELPER}
+					type='link'
+					clickFn={() => router.back()}
 				/>
 			</div>
 
@@ -59,6 +66,41 @@ const ProductForm = ({ scrollPosition }: { scrollPosition: number }) => {
 					name='storeId'
 					label='Store ID'
 					placeholder='081364555'
+				/>
+				<FTextInput
+					name='description'
+					label='Description'
+					placeholder='description 123'
+				/>
+				<FTextInput
+					name='description'
+					label='Description'
+					placeholder='description 123'
+				/>
+				<FTextInput
+					name='description'
+					label='Description'
+					placeholder='description 123'
+				/>
+				<FTextInput
+					name='description'
+					label='Description'
+					placeholder='description 123'
+				/>
+				<FTextInput
+					name='description'
+					label='Description'
+					placeholder='description 123'
+				/>
+				<FTextInput
+					name='description'
+					label='Description'
+					placeholder='description 123'
+				/>
+				<FTextInput
+					name='description'
+					label='Description'
+					placeholder='description 123'
 				/>
 				<FTextInput
 					name='description'

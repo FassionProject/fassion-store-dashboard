@@ -1,14 +1,14 @@
 import { GeneralInputStyle } from '@/assets/styles/inputStyle';
-import { FInputComponentProps } from '@/lib/definition';
+import { FInputComponentProps } from '@/lib/definition/props';
 import { useEffect, useState } from 'react';
 
-const NumberInputStyle: { label: string; icon: string; field: string } = {
+const PhoneInputStyle: { label: string; icon: string; field: string } = {
 	icon: `${GeneralInputStyle.icon} pl-3 text-textColor-SecondaryText`,
 	label: `${GeneralInputStyle.label} text-textColor-SecondaryText`,
-	field: `${GeneralInputStyle.field} w-1/3 pl-[38px] text-right`,
+	field: `${GeneralInputStyle.field} w-1/2 pl-[38px]`,
 };
 
-const FNumberInput = ({ label, placeholder, isRequired, isDisabled, isHidden, isReadonly }: FInputComponentProps) => {
+const FPhoneInput = ({ label, placeholder, isRequired, isDisabled, isHidden, isReadonly }: FInputComponentProps) => {
 	const [inputID, setInputID] = useState('');
 	const [name, setName] = useState('');
 
@@ -23,27 +23,27 @@ const FNumberInput = ({ label, placeholder, isRequired, isDisabled, isHidden, is
 		<div>
 			<label
 				htmlFor={inputID}
-				className={NumberInputStyle.label}>
+				className={PhoneInputStyle.label}>
 				{label} {isRequired ? '*' : ''}
 			</label>
 			<div className='relative'>
-				<div className={NumberInputStyle.icon}>
-					<i className='fa-solid fa-arrow-up-9-1'></i>
+				<div className={PhoneInputStyle.icon}>
+					<i className='fa-solid fa-phone'></i>
 				</div>
 				<input
 					name={name}
-					type='number'
+					type='text'
 					id={inputID}
-					className={NumberInputStyle.field}
-					placeholder={placeholder}
-					required={isRequired}
-					readOnly={isReadonly}
-					hidden={isHidden}
-					disabled={isDisabled}
+					className={PhoneInputStyle.field}
+					placeholder={placeholder ?? ''}
+					required={isRequired ?? false}
+					readOnly={isReadonly ?? false}
+					hidden={isHidden ?? false}
+					disabled={isDisabled ?? false}
 				/>
 			</div>
 		</div>
 	);
 };
 
-export default FNumberInput;
+export default FPhoneInput;

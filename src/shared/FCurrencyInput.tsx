@@ -8,10 +8,9 @@ const CurrencyInputStyle: { label: string; icon: string; field: string } = {
 	field: `${GeneralInputStyle.field} w-1/2 pl-[38px] text-right`,
 };
 
-const FCurrencyInput = ({ label, value, placeholder, isRequired, isDisabled, isHidden, isReadonly }: FInputComponentProps) => {
+const FCurrencyInput = ({ label, placeholder, isRequired, isDisabled, isHidden, isReadonly }: FInputComponentProps) => {
 	const [inputID, setInputID] = useState('');
 	const [name, setName] = useState('');
-	const [inputValue, setInputValue] = useState(typeof value == 'number' ? value : -999);
 
 	useEffect(() => {
 		const formattedLabel = label?.toLowerCase().split(' ').join('-') ?? '_default';
@@ -56,13 +55,12 @@ const FCurrencyInput = ({ label, value, placeholder, isRequired, isDisabled, isH
 					min={0.0}
 					id={inputID}
 					className={CurrencyInputStyle.field}
-					placeholder={placeholder}
 					onChange={currencyInputChangeHandler}
-					value={inputValue}
-					required={isRequired}
-					readOnly={isReadonly}
-					hidden={isHidden}
-					disabled={isDisabled}
+					placeholder={placeholder ?? ''}
+					required={isRequired ?? false}
+					readOnly={isReadonly ?? false}
+					hidden={isHidden ?? false}
+					disabled={isDisabled ?? false}
 				/>
 			</div>
 		</div>

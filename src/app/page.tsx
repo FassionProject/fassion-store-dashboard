@@ -4,7 +4,7 @@ import { getProductCategories } from '@/services/product-category-service';
 import Link from 'next/link';
 
 const Login = () => {
-	const redirectRoute = '/dashboard/product/12313123123';
+	const redirectRoute = '/dashboard/product';
 
 	const apiCallHandler = async () => {
 		console.log('loading...');
