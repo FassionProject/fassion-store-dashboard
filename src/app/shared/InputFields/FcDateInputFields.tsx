@@ -2,13 +2,13 @@ import { GeneralInputStyle } from '@/assets/styles/inputStyle';
 import { FInputComponentProps } from '@/lib/definition/props';
 import { useEffect, useState } from 'react';
 
-const TextAreaInputStyle: { label: string; icon: string; field: string } = {
+const DateInputStyle = {
 	icon: `${GeneralInputStyle.icon} pl-3 text-textColor-SecondaryText`,
 	label: `${GeneralInputStyle.label} text-textColor-SecondaryText`,
-	field: `${GeneralInputStyle.field} w-full min-h-[150px] pl-[38px]`,
+	field: `${GeneralInputStyle.field} w-1/2 pl-[38px]`,
 };
 
-const FTextAreaInput = ({ label, placeholder, icon, isRequired, isDisabled, isHidden, isReadonly }: FInputComponentProps) => {
+const FcDateInputFields = ({ label, placeholder, isRequired, isDisabled, isHidden, isReadonly }: FInputComponentProps) => {
 	const [inputID, setInputID] = useState('');
 	const [name, setName] = useState('');
 
@@ -23,24 +23,27 @@ const FTextAreaInput = ({ label, placeholder, icon, isRequired, isDisabled, isHi
 		<div>
 			<label
 				htmlFor={inputID}
-				className={TextAreaInputStyle.label}>
+				className={DateInputStyle.label}>
 				{label} {isRequired ? '*' : ''}
 			</label>
 			<div className='relative'>
-				<div className={TextAreaInputStyle.icon}>{icon ? icon : <i className='fa-solid fa-font'></i>}</div>
-				<textarea
+				<div className={DateInputStyle.icon}>
+					<i className='fa-solid fa-calendar-days'></i>
+				</div>
+				<input
 					name={name}
+					type='date'
 					id={inputID}
-					className={TextAreaInputStyle.field}
+					className={DateInputStyle.field}
 					placeholder={placeholder ?? ''}
 					required={isRequired ?? false}
 					readOnly={isReadonly ?? false}
 					hidden={isHidden ?? false}
 					disabled={isDisabled ?? false}
-					></textarea>
+				/>
 			</div>
 		</div>
 	);
 };
 
-export default FTextAreaInput;
+export default FcDateInputFields;

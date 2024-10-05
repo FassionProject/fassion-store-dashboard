@@ -1,6 +1,6 @@
 'use client';
 
-import { getProductCategories } from '@/services/product-category-service';
+import { getProducts } from '@/services/product-service';
 import Link from 'next/link';
 
 const Login = () => {
@@ -9,7 +9,7 @@ const Login = () => {
 	const apiCallHandler = async () => {
 		console.log('loading...');
 
-		const products = await getProductCategories({ page: 1, pageSize: 10 });
+		const products = await getProducts({ page: 1, pageSize: 10 });
 		console.log(products);
 
 		console.log('loaded...');

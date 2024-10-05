@@ -8,7 +8,7 @@ const TextInputStyle = {
 	field: `${GeneralInputStyle.field} w-full pl-[38px]`,
 };
 
-const FTextInput = ({ label, name, placeholder, icon, isRequired, isDisabled, isHidden, isReadonly }: FInputComponentProps) => {
+const FcTextInputField = ({ label, name, placeholder, icon, isRequired, isDisabled, isHidden, isReadonly }: FInputComponentProps) => {
 	const [inputID, setInputID] = useState('');
 
 	// Set ID & Name of <input/> element
@@ -44,4 +44,4 @@ const FTextInput = ({ label, name, placeholder, icon, isRequired, isDisabled, is
 	);
 };
 
-export default FTextInput;
+export default FcTextInputField;

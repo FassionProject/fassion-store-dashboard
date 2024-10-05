@@ -1,0 +1,22 @@
+.datatable-wrapper {
+	padding-bottom: 80px;
+
+	position: relative;
+
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.table-head {
+	position: sticky;
+	z-index: 10;
+	top: 76px;
+	text-transform: uppercase;
+	font-size: 0.75rem;
+	color: #4b5563;
+	background-color: rgba(240, 242, 245, 0.5);
+	backdrop-filter: blur(6px);
+}
+
+/* sticky z-10 top-2 uppercase text-sm text-slate-500 bg-black */

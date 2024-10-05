@@ -2,13 +2,13 @@ import { GeneralInputStyle } from '@/assets/styles/inputStyle';
 import { FInputComponentProps } from '@/lib/definition/props';
 import { useEffect, useState } from 'react';
 
-const PhoneInputStyle: { label: string; icon: string; field: string } = {
+const TextAreaInputStyle: { label: string; icon: string; field: string } = {
 	icon: `${GeneralInputStyle.icon} pl-3 text-textColor-SecondaryText`,
 	label: `${GeneralInputStyle.label} text-textColor-SecondaryText`,
-	field: `${GeneralInputStyle.field} w-1/2 pl-[38px]`,
+	field: `${GeneralInputStyle.field} w-full min-h-[150px] pl-[38px]`,
 };
 
-const FPhoneInput = ({ label, placeholder, isRequired, isDisabled, isHidden, isReadonly }: FInputComponentProps) => {
+const FcTextAreaInputField = ({ label, placeholder, icon, isRequired, isDisabled, isHidden, isReadonly }: FInputComponentProps) => {
 	const [inputID, setInputID] = useState('');
 	const [name, setName] = useState('');
 
@@ -23,27 +23,23 @@ const FPhoneInput = ({ label, placeholder, isRequired, isDisabled, isHidden, isR
 		<div>
 			<label
 				htmlFor={inputID}
-				className={PhoneInputStyle.label}>
+				className={TextAreaInputStyle.label}>
 				{label} {isRequired ? '*' : ''}
 			</label>
 			<div className='relative'>
-				<div className={PhoneInputStyle.icon}>
-					<i className='fa-solid fa-phone'></i>
-				</div>
-				<input
+				<div className={TextAreaInputStyle.icon}>{icon ? icon : <i className='fa-solid fa-font'></i>}</div>
+				<textarea
 					name={name}
-					type='text'
 					id={inputID}
-					className={PhoneInputStyle.field}
+					className={TextAreaInputStyle.field}
 					placeholder={placeholder ?? ''}
 					required={isRequired ?? false}
 					readOnly={isReadonly ?? false}
 					hidden={isHidden ?? false}
-					disabled={isDisabled ?? false}
-				/>
+					disabled={isDisabled ?? false}></textarea>
 			</div>
 		</div>
 	);
 };
 
-export default FPhoneInput;
+export default FcTextAreaInputField;

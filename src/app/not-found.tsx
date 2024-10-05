@@ -1,10 +1,10 @@
 'use client';
 
 import { notFoundAnimation } from '@/assets';
-import { FButtonStyle } from '@/lib/enums';
-import FButton from '@/shared/FButton';
+import { FeButtonStyleType } from '@/lib/enums';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import FcButton from './shared/FcButton';
 
 const NotFound = () => {
 	const router = useRouter();
@@ -17,10 +17,10 @@ const NotFound = () => {
 				width={240}
 			/>
 
-			<FButton
+			<FcButton
 				type='link'
 				label='Kembali'
-				classStyle={FButtonStyle.HELPER}
+				classStyle={FeButtonStyleType.HELPER}
 				clickFn={() => router.back()}
 			/>
 		</div>

@@ -1,7 +1,7 @@
 import { Modal } from 'flowbite-react';
-import FTableListData from './FTableListData';
+import FcDataTable from './FcDataTable';
 
-const FModal = ({ openModal, setOpenModal }: { openModal: boolean; setOpenModal: React.Dispatch<React.SetStateAction<boolean>> }) => {
+const FcModal = ({ openModal, setOpenModal }: { openModal: boolean; setOpenModal: React.Dispatch<React.SetStateAction<boolean>> }) => {
 	return (
 		<Modal
 			dismissible
@@ -10,10 +10,10 @@ const FModal = ({ openModal, setOpenModal }: { openModal: boolean; setOpenModal:
 			onClose={() => setOpenModal(false)}>
 			<Modal.Header>Terms of Service</Modal.Header>
 			<Modal.Body>
-				<FTableListData />
+				<FcDataTable />
 			</Modal.Body>
 		</Modal>
 	);
 };
 
-export default FModal;
+export default FcModal;

@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import FButton from './FButton';
-import FModal from './FModal';
+import FcButton from './FcButton';
+import FcModal from './FcModal';
 
-const FLookupInput = () => {
+const FcLookup = () => {
 	const [openModal, setOpenModal] = useState(false);
 
 	return (
 		<>
-			<FButton
+			<FcButton
 				label='Toggel Modal'
 				type='lookup'
 				clickFn={() => setOpenModal(true)}
@@ -18,7 +18,7 @@ const FLookupInput = () => {
 				hidden
 			/>
 
-			<FModal
+			<FcModal
 				openModal={openModal}
 				setOpenModal={setOpenModal}
 			/>
@@ -26,4 +26,4 @@ const FLookupInput = () => {
 	);
 };
 
-export default FLookupInput;
+export default FcLookup;

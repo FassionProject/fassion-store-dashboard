@@ -1,31 +1,31 @@
-import tableHead from 'assets/styles/components/tableHead.module.css';
-import tableWrapper from 'assets/styles/components/tableWrapper.module.css';
-import { ProductModel } from '@/lib/model';
-import FButton from './FButton';
-import { FButtonStyle } from '@/lib/enums';
-import { useRouter } from 'next/navigation';
-import FSearchInput from './FSearchInput';
-import { useContext } from 'react';
 import { ScrollContext } from '@/hooks/context/ScrollContextProvider';
+import { ProductModel } from '@/lib/model';
+import { useRouter } from 'next/navigation';
+import { useContext } from 'react';
+import FcButton from './FcButton';
+import { FeButtonStyleType } from '@/lib/enums';
+import FcSearchInputField from './InputFields/FcSearchInputField';
 
-const FTableListData = ({ data }: { data: { items: Array<ProductModel> | null } }) => {
+import dataTableStyle from 'assets/styles/components/FsDataTable.module.css';
+
+const FcDataTable = ({ data }: { data: { items: Array<ProductModel> | null } }) => {
 	const router = useRouter();
 	const scrollPosition = useContext(ScrollContext);
 
 	return (
-		<div className={tableWrapper['tableWrapperStyle']}>
+		<div className={dataTableStyle['datatable-wrapper']}>
 			<div className='sticky z-10 top-0'>
-				<div className={`p-2 grid grid-cols-3 gap-2 ${scrollPosition > 0 ? 'bg-white bg-opacity-50 backdrop-blur-sm rounded-lg border-slate-200 border-[1px]' : ''}`}>
+				<div className={`p-2 grid grid-cols-3 gap-4 ${scrollPosition > 0 ? 'bg-white bg-opacity-50 backdrop-blur-sm rounded-lg border-slate-200 border-[1px]' : ''}`}>
 					<div className='col-start-1 flex items-center'>
-						<FButton
+						<FcButton
 							type='button'
 							label='Tambah'
-							classStyle={FButtonStyle.INFO}
+							classStyle={FeButtonStyleType.INFO}
 							clickFn={() => router.push('/dashboard/product/add')}
 						/>
 					</div>
 					<div className='col-start-3'>
-						<FSearchInput
+						<FcSearchInputField
 							name='table-list-search'
 							placeholder='Search here...'
 							icon={<i className='fa-solid fa-magnifying-glass'></i>}
@@ -34,9 +34,9 @@ const FTableListData = ({ data }: { data: { items: Array<ProductModel> | null } 
 				</div>
 			</div>
 
-			<div className='overflow-x-auto'>
-				<table className='w-full text-sm text-left text-gray-500 rounded-4'>
-					<thead className={`${tableHead['stickyElement']}`}>
+			<div className=''>
+				<table className='w-full text-sm text-left text-gray-500 rounded-4 relative'>
+					<thead className={dataTableStyle['table-head']}>
 						<tr>
 							<th
 								scope='col'
@@ -85,10 +85,10 @@ const FTableListData = ({ data }: { data: { items: Array<ProductModel> | null } 
 									<td className='px-6 py-4'>{stock}</td>
 									<td className='px-6 py-4'>${price}</td>
 									<td className='px-6 py-4'>
-										<FButton
+										<FcButton
 											type='link'
 											href={`/dashboard/product/${name?.split(' ').join('-')}_${index}`}
-											classStyle={FButtonStyle.INFO}
+											classStyle={FeButtonStyleType.INFO}
 											label='Edit'
 										/>
 									</td>
@@ -137,4 +137,4 @@ const FTableListData = ({ data }: { data: { items: Array<ProductModel> | null } 
 	);
 };
 
-export default FTableListData;
+export default FcDataTable;

@@ -1,9 +1,7 @@
-enum FButtonStyle {
+export enum FeButtonStyleType {
 	INFO,
 	WARNING,
 	SUCCESS,
 	DANGER,
 	HELPER,
 }
-
-export { FButtonStyle };

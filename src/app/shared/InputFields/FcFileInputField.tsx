@@ -8,7 +8,7 @@ const fileInputStyle: { label: string; icon: string; field: string; helperText: 
 	helperText: 'mt-1 text-sm text-gray-500',
 };
 
-const FFileInput = ({ label, helperText, isRequired, isDisabled, isHidden, isReadonly, isDropzone }: FInputComponentProps) => {
+const FcFileInputField = ({ label, helperText, isRequired, isDisabled, isHidden, isReadonly, isDropzone }: FInputComponentProps) => {
 	const [inputID, setInputID] = useState('');
 	const [name, setName] = useState('');
 	const [ariaDescribedby, setAriaDescribedby] = useState('');
@@ -82,4 +82,4 @@ const FFileInput = ({ label, helperText, isRequired, isDisabled, isHidden, isRea
 	}
 };
 
-export default FFileInput;
+export default FcFileInputField;

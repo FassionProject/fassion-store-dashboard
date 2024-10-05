@@ -1,4 +1,4 @@
-import FTableListData from '@/shared/FTableListData';
+import FcDataTable from '@/app/shared/FcDataTable';
 import { loadingAnimation } from '@/assets';
 import { ProductModel } from '@/lib/model';
 import Image from 'next/image';
@@ -293,7 +293,7 @@ const ProductList = () => {
 				</div>
 			) : (
 				<div>
-					<FTableListData data={{ items: listData }} />
+					<FcDataTable data={{ items: listData }} />
 				</div>
 			)}
 		</div>

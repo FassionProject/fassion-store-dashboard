@@ -1,5 +1,5 @@
 export const HTTP_BASE_CONFIG = {
-	baseURL: 'http://fassion.api.fassion.site/',
+	baseURL: 'https://fassion-api-production.up.railway.app/',
 };
 
 export const BASE_PRODUCT_ENDPOINT = '/Product';

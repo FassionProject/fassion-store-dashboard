@@ -1,9 +1,9 @@
 'use client';
 
 import React, { useState } from 'react';
-import DashboardHeader from './components/DashboardHeader';
-import DashboardSidebar from './components/DashboardSidebar';
 import { ScrollContextProvider } from '../../hooks/context/ScrollContextProvider';
+import DashboardHeader from '../components/dashboard/DashboardHeader';
+import DashboardSidebar from '../components/dashboard/DashboardSidebar';
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
 	const [scrollPosition, setScrollPosition] = useState(0);

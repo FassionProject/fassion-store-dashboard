@@ -8,7 +8,7 @@ const CurrencyInputStyle: { label: string; icon: string; field: string } = {
 	field: `${GeneralInputStyle.field} w-1/2 pl-[38px] text-right`,
 };
 
-const FCurrencyInput = ({ label, placeholder, isRequired, isDisabled, isHidden, isReadonly }: FInputComponentProps) => {
+const FcCurrencyInputField = ({ label, placeholder, isRequired, isDisabled, isHidden, isReadonly }: FInputComponentProps) => {
 	const [inputID, setInputID] = useState('');
 	const [name, setName] = useState('');
 
@@ -35,7 +35,7 @@ const FCurrencyInput = ({ label, placeholder, isRequired, isDisabled, isHidden, 
 		const deformattedValue = deformatCurrency(value);
 		console.log(formatCurrency(deformattedValue));
 
-		setInputValue(formatCurrency(deformattedValue));
+		// setInputValue(formatCurrency(deformattedValue));
 	};
 
 	return (
@@ -67,4 +67,4 @@ const FCurrencyInput = ({ label, placeholder, isRequired, isDisabled, isHidden, 
 	);
 };
 
-export default FCurrencyInput;
+export default FcCurrencyInputField;

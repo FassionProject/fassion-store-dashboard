@@ -1,9 +1,9 @@
 'use client';
 
 import { FormEvent, useEffect, useState } from 'react';
-import FTextInput from '../../../../shared/FTextInput';
-import FButton from '../../../../shared/FButton';
-import { FButtonStyle } from '@/lib/enums';
+import FcTextInputField from '../../shared/InputFields/FcTextInputField';
+import FcButton from '../../shared/FcButton';
+import { FeButtonStyleType } from '@/lib/enums';
 import { ProductModel } from '@/lib/model';
 import { useRouter } from 'next/navigation';
 
@@ -43,66 +43,66 @@ const ProductForm = ({ scrollPosition }: { scrollPosition: number }) => {
 			onSubmit={handleFormSubmit}
 			id='product-form-element'>
 			<div className={`mb-4 bg-white bg-opacity-10 backdrop-blur-sm flex gap-2 sticky top-0 z-10 p-2 rounded-lg ${scrollPosition > 0 ? 'border-slate-200 border-[1px]' : ''}`}>
-				<FButton
+				<FcButton
 					label='Simpan'
-					classStyle={FButtonStyle.SUCCESS}
+					classStyle={FeButtonStyleType.SUCCESS}
 					type='submit'
 				/>
-				<FButton
+				<FcButton
 					label='Kembali'
-					classStyle={FButtonStyle.HELPER}
+					classStyle={FeButtonStyleType.HELPER}
 					type='link'
 					clickFn={() => router.back()}
 				/>
 			</div>
 
 			<div className='grid gap-4 grid-cols-1 lg:grid-cols-1'>
-				<FTextInput
+				<FcTextInputField
 					name='name'
 					label='Name'
 					placeholder='Judah Dasuki'
 				/>
-				<FTextInput
+				<FcTextInputField
 					name='storeId'
 					label='Store ID'
 					placeholder='081364555'
 				/>
-				<FTextInput
+				<FcTextInputField
 					name='description'
 					label='Description'
 					placeholder='description 123'
 				/>
-				<FTextInput
+				<FcTextInputField
 					name='description'
 					label='Description'
 					placeholder='description 123'
 				/>
-				<FTextInput
+				<FcTextInputField
 					name='description'
 					label='Description'
 					placeholder='description 123'
 				/>
-				<FTextInput
+				<FcTextInputField
 					name='description'
 					label='Description'
 					placeholder='description 123'
 				/>
-				<FTextInput
+				<FcTextInputField
 					name='description'
 					label='Description'
 					placeholder='description 123'
 				/>
-				<FTextInput
+				<FcTextInputField
 					name='description'
 					label='Description'
 					placeholder='description 123'
 				/>
-				<FTextInput
+				<FcTextInputField
 					name='description'
 					label='Description'
 					placeholder='description 123'
 				/>
-				<FTextInput
+				<FcTextInputField
 					name='description'
 					label='Description'
 					placeholder='description 123'

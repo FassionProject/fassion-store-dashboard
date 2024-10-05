@@ -1,4 +1,4 @@
-import { FButtonStyle } from "../enums";
+import { FeButtonStyleType } from '../enums';
 
 type NullOrUndefined = null | undefined;
 
@@ -19,6 +19,6 @@ export type FButtonComponentProps = {
 	type: 'button' | 'submit' | 'reset' | 'lookup' | 'link';
 	label: string;
 	href?: string;
-	classStyle?: FButtonStyle;
+	classStyle?: FeButtonStyleType;
 	clickFn?: (param: React.MouseEvent) => void;
 };

@@ -8,7 +8,7 @@ const NumberInputStyle: { label: string; icon: string; field: string } = {
 	field: `${GeneralInputStyle.field} w-1/3 pl-[38px] text-right`,
 };
 
-const FNumberInput = ({ label, placeholder, isRequired, isDisabled, isHidden, isReadonly }: FInputComponentProps) => {
+const FcNumberInputField = ({ label, placeholder, isRequired, isDisabled, isHidden, isReadonly }: FInputComponentProps) => {
 	const [inputID, setInputID] = useState('');
 	const [name, setName] = useState('');
 
@@ -46,4 +46,4 @@ const FNumberInput = ({ label, placeholder, isRequired, isDisabled, isHidden, is
 	);
 };
 
-export default FNumberInput;
+export default FcNumberInputField;

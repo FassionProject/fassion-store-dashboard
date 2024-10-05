@@ -8,7 +8,7 @@ const TextInputStyle = {
 	field: `${GeneralInputStyle.field} w-full pl-[38px]`,
 };
 
-const FSearchInput = ({ label, name, placeholder, icon, isRequired, isDisabled, isHidden, isReadonly }: FInputComponentProps) => {
+const FcSearchInputField = ({ label, name, placeholder, icon, isRequired, isDisabled, isHidden, isReadonly }: FInputComponentProps) => {
 	const [inputID, setInputID] = useState('');
 
 	// Set ID & Name of <input/> element
@@ -36,4 +36,4 @@ const FSearchInput = ({ label, name, placeholder, icon, isRequired, isDisabled, 
 	);
 };
 
-export default FSearchInput;
+export default FcSearchInputField;
