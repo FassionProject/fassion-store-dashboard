@@ -39,7 +39,7 @@ const FcDataTable = ({ data }: { data: { items: Array<ProductModel> | null } }) 
 					<tr>
 						<th
 							scope='col'
-							className='px-6 py-3'>
+							className='px-6 py-3 rounded-l-md'>
 							Product name
 						</th>
 						<th
@@ -54,7 +54,7 @@ const FcDataTable = ({ data }: { data: { items: Array<ProductModel> | null } }) 
 						</th>
 						<th
 							scope='col'
-							className='px-6 py-3'>
+							className='px-6 py-3 rounded-r-md'>
 							Action
 						</th>
 					</tr>
@@ -98,7 +98,7 @@ const FcDataTable = ({ data }: { data: { items: Array<ProductModel> | null } }) 
 			</table>
 
 			<nav
-				className='fixed bottom-2 left-[263px] right-2 flex items-center flex-column flex-wrap md:flex-row justify-between p-4 bg-white bg-opacity-50 backdrop-blur-sm rounded-lg border-slate-200 border-[1px]'
+				className='fixed bottom-2 left-[270px] right-6 flex items-center flex-column flex-wrap md:flex-row justify-between p-2 bg-white bg-opacity-50 backdrop-blur-sm rounded-lg border-slate-200 border-[1px]'
 				aria-label='Table navigation'>
 				<span className='text-sm font-normal text-gray-500 dark:text-gray-400 mb-4 md:mb-0 block w-full md:inline md:w-auto'>
 					Showing <span className='font-semibold text-gray-900'>1-10</span> of <span className='font-semibold text-gray-900'>1000</span>
