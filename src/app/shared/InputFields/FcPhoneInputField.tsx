@@ -8,7 +8,7 @@ const PhoneInputStyle: { label: string; icon: string; field: string } = {
 	field: `${GeneralInputStyle.field} w-1/2 pl-[38px]`,
 };
 
-const FcPhoneInputField = ({ label, placeholder, isRequired, isDisabled, isHidden, isReadonly }: FInputComponentProps) => {
+const FcPhoneInputField = ({ label, placeholder, isRequired, isDisabled, isReadonly }: FInputComponentProps) => {
 	const [inputID, setInputID] = useState('');
 	const [name, setName] = useState('');
 
@@ -31,15 +31,15 @@ const FcPhoneInputField = ({ label, placeholder, isRequired, isDisabled, isHidde
 					<i className='fa-solid fa-phone'></i>
 				</div>
 				<input
+					type='tel'
 					name={name}
-					type='text'
 					id={inputID}
 					className={PhoneInputStyle.field}
-					placeholder={placeholder ?? ''}
-					required={isRequired ?? false}
-					readOnly={isReadonly ?? false}
-					hidden={isHidden ?? false}
-					disabled={isDisabled ?? false}
+					placeholder={placeholder ?? '0812-3456-7890'}
+					required={isRequired}
+					readOnly={isReadonly}
+					disabled={isDisabled}
+					pattern='^0\d{2,3}[\s-]?\d{3,4}[\s-]?\d{4}$'
 				/>
 			</div>
 		</div>

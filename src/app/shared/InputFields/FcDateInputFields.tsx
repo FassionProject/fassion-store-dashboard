@@ -8,7 +8,7 @@ const DateInputStyle = {
 	field: `${GeneralInputStyle.field} w-1/2 pl-[38px]`,
 };
 
-const FcDateInputFields = ({ label, placeholder, isRequired, isDisabled, isHidden, isReadonly }: FInputComponentProps) => {
+const FcDateInputFields = ({ label, placeholder, isRequired, isDisabled, isReadonly }: FInputComponentProps) => {
 	const [inputID, setInputID] = useState('');
 	const [name, setName] = useState('');
 
@@ -31,15 +31,14 @@ const FcDateInputFields = ({ label, placeholder, isRequired, isDisabled, isHidde
 					<i className='fa-solid fa-calendar-days'></i>
 				</div>
 				<input
-					name={name}
 					type='date'
+					name={name}
 					id={inputID}
 					className={DateInputStyle.field}
-					placeholder={placeholder ?? ''}
-					required={isRequired ?? false}
-					readOnly={isReadonly ?? false}
-					hidden={isHidden ?? false}
-					disabled={isDisabled ?? false}
+					placeholder={placeholder}
+					required={isRequired}
+					readOnly={isReadonly}
+					disabled={isDisabled}
 				/>
 			</div>
 		</div>

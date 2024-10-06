@@ -1,5 +1,5 @@
 import { GeneralInputStyle } from '@/assets/styles/inputStyle';
-import { FInputComponentProps } from '@/lib/definition/props';
+import { FInputComponentProps, FNumberOrCurrencyInputComponentProps } from '@/lib/definition/props';
 import { ChangeEvent, useEffect, useState } from 'react';
 
 const CurrencyInputStyle: { label: string; icon: string; field: string } = {
@@ -8,7 +8,7 @@ const CurrencyInputStyle: { label: string; icon: string; field: string } = {
 	field: `${GeneralInputStyle.field} w-1/2 pl-[38px] text-right`,
 };
 
-const FcCurrencyInputField = ({ label, placeholder, isRequired, isDisabled, isHidden, isReadonly }: FInputComponentProps) => {
+const FcCurrencyInputField = ({ label, placeholder, minValue, maxValue, isRequired, isDisabled, isReadonly }: FNumberOrCurrencyInputComponentProps) => {
 	const [inputID, setInputID] = useState('');
 	const [name, setName] = useState('');
 
@@ -50,17 +50,18 @@ const FcCurrencyInputField = ({ label, placeholder, isRequired, isDisabled, isHi
 					<i className='fa-solid fa-rupiah-sign'></i>
 				</div>
 				<input
-					name={name}
 					type='number'
-					min={0.0}
+					name={name}
 					id={inputID}
 					className={CurrencyInputStyle.field}
+					placeholder={placeholder}
+					min={minValue}
+					max={maxValue}
+					step={0.1}
+					required={isRequired}
+					readOnly={isReadonly}
+					disabled={isDisabled}
 					onChange={currencyInputChangeHandler}
-					placeholder={placeholder ?? ''}
-					required={isRequired ?? false}
-					readOnly={isReadonly ?? false}
-					hidden={isHidden ?? false}
-					disabled={isDisabled ?? false}
 				/>
 			</div>
 		</div>

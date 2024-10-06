@@ -1,5 +1,5 @@
 import { GeneralInputStyle } from '@/assets/styles/inputStyle';
-import { FInputComponentProps } from '@/lib/definition/props';
+import { FNumberOrCurrencyInputComponentProps } from '@/lib/definition/props';
 import { useEffect, useState } from 'react';
 
 const NumberInputStyle: { label: string; icon: string; field: string } = {
@@ -8,7 +8,7 @@ const NumberInputStyle: { label: string; icon: string; field: string } = {
 	field: `${GeneralInputStyle.field} w-1/3 pl-[38px] text-right`,
 };
 
-const FcNumberInputField = ({ label, placeholder, isRequired, isDisabled, isHidden, isReadonly }: FInputComponentProps) => {
+const FcNumberInputField = ({ label, placeholder, minValue, maxValue, isRequired, isDisabled, isReadonly }: FNumberOrCurrencyInputComponentProps) => {
 	const [inputID, setInputID] = useState('');
 	const [name, setName] = useState('');
 
@@ -31,15 +31,16 @@ const FcNumberInputField = ({ label, placeholder, isRequired, isDisabled, isHidd
 					<i className='fa-solid fa-arrow-up-9-1'></i>
 				</div>
 				<input
-					name={name}
 					type='number'
+					name={name}
 					id={inputID}
 					className={NumberInputStyle.field}
 					placeholder={placeholder ?? ''}
-					required={isRequired ?? false}
-					readOnly={isReadonly ?? false}
-					hidden={isHidden ?? false}
-					disabled={isDisabled ?? false}
+					min={minValue}
+					max={maxValue}
+					required={isRequired}
+					readOnly={isReadonly}
+					disabled={isDisabled}
 				/>
 			</div>
 		</div>

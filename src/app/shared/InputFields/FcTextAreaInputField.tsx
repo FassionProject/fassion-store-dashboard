@@ -8,7 +8,7 @@ const TextAreaInputStyle: { label: string; icon: string; field: string } = {
 	field: `${GeneralInputStyle.field} w-full min-h-[150px] pl-[38px]`,
 };
 
-const FcTextAreaInputField = ({ label, placeholder, icon, isRequired, isDisabled, isHidden, isReadonly }: FInputComponentProps) => {
+const FcTextAreaInputField = ({ label, placeholder, icon, isRequired, isDisabled, isReadonly }: FInputComponentProps) => {
 	const [inputID, setInputID] = useState('');
 	const [name, setName] = useState('');
 
@@ -32,11 +32,10 @@ const FcTextAreaInputField = ({ label, placeholder, icon, isRequired, isDisabled
 					name={name}
 					id={inputID}
 					className={TextAreaInputStyle.field}
-					placeholder={placeholder ?? ''}
-					required={isRequired ?? false}
-					readOnly={isReadonly ?? false}
-					hidden={isHidden ?? false}
-					disabled={isDisabled ?? false}></textarea>
+					placeholder={placeholder}
+					required={isRequired}
+					readOnly={isReadonly}
+					disabled={isDisabled}></textarea>
 			</div>
 		</div>
 	);

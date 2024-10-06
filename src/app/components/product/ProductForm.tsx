@@ -6,6 +6,7 @@ import FcButton from '../../shared/FcButton';
 import { FeButtonStyleType } from '@/lib/enums';
 import { ProductModel } from '@/lib/model';
 import { useRouter } from 'next/navigation';
+import FcTextAreaInputField from '@/app/shared/InputFields/FcTextAreaInputField';
 
 const ProductForm = ({ scrollPosition }: { scrollPosition: number }) => {
 	const [productFormData, setProductFormData] = useState<ProductModel>({
@@ -67,45 +68,10 @@ const ProductForm = ({ scrollPosition }: { scrollPosition: number }) => {
 					label='Store ID'
 					placeholder='081364555'
 				/>
-				<FcTextInputField
+				<FcTextAreaInputField
 					name='description'
 					label='Description'
-					placeholder='description 123'
-				/>
-				<FcTextInputField
-					name='description'
-					label='Description'
-					placeholder='description 123'
-				/>
-				<FcTextInputField
-					name='description'
-					label='Description'
-					placeholder='description 123'
-				/>
-				<FcTextInputField
-					name='description'
-					label='Description'
-					placeholder='description 123'
-				/>
-				<FcTextInputField
-					name='description'
-					label='Description'
-					placeholder='description 123'
-				/>
-				<FcTextInputField
-					name='description'
-					label='Description'
-					placeholder='description 123'
-				/>
-				<FcTextInputField
-					name='description'
-					label='Description'
-					placeholder='description 123'
-				/>
-				<FcTextInputField
-					name='description'
-					label='Description'
-					placeholder='description 123'
+					placeholder='Barang yang paling yahutt..'
 				/>
 			</div>
 		</form>

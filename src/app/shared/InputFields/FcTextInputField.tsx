@@ -1,10 +1,10 @@
 import textInputStyle from 'assets/styles/components/FsInputFields.module.css';
 
-import { FInputComponentProps } from '@/lib/definition/props';
+import { FTextInputComponentProps } from '@/lib/definition/props';
 
 import { useEffect, useState } from 'react';
 
-const FcTextInputField = ({ label, name, placeholder, icon, isRequired, isDisabled, isHidden, isReadonly }: FInputComponentProps) => {
+const FcTextInputField = ({ label, name, placeholder, icon, minLength, maxLength, isRequired, isDisabled, isReadonly }: FTextInputComponentProps) => {
 	const [inputID, setInputID] = useState('');
 
 	// Set ID & Name of <input/> element
@@ -15,7 +15,7 @@ const FcTextInputField = ({ label, name, placeholder, icon, isRequired, isDisabl
 	}, [label]);
 
 	return (
-		<div hidden={isHidden ?? false}>
+		<div>
 			<label
 				htmlFor={inputID}
 				className={textInputStyle['text-field-label']}>
@@ -28,11 +28,14 @@ const FcTextInputField = ({ label, name, placeholder, icon, isRequired, isDisabl
 					name={name}
 					id={inputID}
 					className={textInputStyle['text-field-input']}
+					autoComplete='false'
+					autoCorrect='false'
 					placeholder={placeholder ?? ''}
-					required={isRequired ?? false}
-					readOnly={isReadonly ?? false}
-					hidden={isHidden ?? false}
-					disabled={isDisabled ?? false}
+					required={isRequired}
+					readOnly={isReadonly}
+					disabled={isDisabled}
+					minLength={minLength}
+					maxLength={maxLength}
 				/>
 			</div>
 		</div>
