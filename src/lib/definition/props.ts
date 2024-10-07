@@ -5,14 +5,15 @@ type NullOrUndefined = null | undefined;
 export type FInputComponentProps = {
 	label: string;
 	name: string;
-	placeholder?: string | 'Type Here..';
-	helperText?: string | '';
+	placeholder?: string | NullOrUndefined;
+	helperText?: string | NullOrUndefined;
+	validationText?: string;
 	icon?: React.ReactNode | NullOrUndefined;
-	isRequired?: boolean | false;
-	isReadonly?: boolean | false;
-	isDisabled?: boolean | false;
+	isRequired?: boolean | NullOrUndefined;
+	isReadonly?: boolean | NullOrUndefined;
+	isDisabled?: boolean | NullOrUndefined;
 };
-// TODO: Tambah validation text
+
 export type FTextInputComponentProps = FInputComponentProps & {
 	minLength?: number | 0;
 	maxLength?: number | 999;

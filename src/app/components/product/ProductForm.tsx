@@ -7,6 +7,8 @@ import { FeButtonStyleType } from '@/lib/enums';
 import { ProductModel } from '@/lib/model';
 import { useRouter } from 'next/navigation';
 import FcTextAreaInputField from '@/app/shared/InputFields/FcTextAreaInputField';
+import FcCurrencyInputField from '@/app/shared/InputFields/FcCurrencyInputField';
+import FcNumberInputField from '@/app/shared/InputFields/FcNumberInputField';
 
 const ProductForm = ({ scrollPosition }: { scrollPosition: number }) => {
 	const [productFormData, setProductFormData] = useState<ProductModel>({
@@ -29,14 +31,23 @@ const ProductForm = ({ scrollPosition }: { scrollPosition: number }) => {
 	const handleFormSubmit = (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 
-		const formData = new FormData(event.target as HTMLFormElement);
-		// const productData: ProductModel = productFormData;
+		Array.from(((event.target as HTMLInputElement).children[1] as HTMLInputElement).children).forEach((element) => {
+			const isValid: boolean = ((element as HTMLInputElement).children[1] as HTMLInputElement).reportValidity();
 
-		formData.entries().forEach((data) => {
-			if (!data[1]) {
-				alert(`Harap diisi data dari ${data[0]}`);
+			if (isValid) {
+				console.log('Valid');
+			} else {
+				console.log('Tidak Valid');
+				const inputName = ((element as HTMLInputElement).children[1] as HTMLInputElement).getAttribute('name');
+				console.log(inputName);
 			}
 		});
+
+		// const formData = new FormData(event.target as HTMLFormElement);
+
+		// formData.entries().forEach((data) => {
+		// 	console.log(data);
+		// });
 	};
 
 	return (
@@ -62,16 +73,37 @@ const ProductForm = ({ scrollPosition }: { scrollPosition: number }) => {
 					name='name'
 					label='Name'
 					placeholder='Judah Dasuki'
+					isRequired
 				/>
 				<FcTextInputField
 					name='storeId'
 					label='Store ID'
-					placeholder='081364555'
+					placeholder='1234asdf'
+					isRequired
+				/>
+				<FcTextInputField
+					name='categoryId'
+					label='Category ID'
+					placeholder='asdf3423'
+					isRequired
 				/>
 				<FcTextAreaInputField
 					name='description'
 					label='Description'
 					placeholder='Barang yang paling yahutt..'
+					isRequired
+				/>
+				<FcCurrencyInputField
+					label='Price'
+					name='price'
+					placeholder='1,400,000'
+					isRequired
+				/>
+				<FcNumberInputField
+					label='Stock'
+					name='stock'
+					placeholder='1'
+					isRequired
 				/>
 			</div>
 		</form>

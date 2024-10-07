@@ -1,22 +1,14 @@
-import { GeneralInputStyle } from '@/assets/styles/inputStyle';
-import { FInputComponentProps, FNumberOrCurrencyInputComponentProps } from '@/lib/definition/props';
+import inputElementStyle from 'assets/styles/components/FsInputFields.module.css';
+import { FNumberOrCurrencyInputComponentProps } from '@/lib/definition/props';
 import { ChangeEvent, useEffect, useState } from 'react';
 
-const CurrencyInputStyle: { label: string; icon: string; field: string } = {
-	icon: `${GeneralInputStyle.icon} pl-3 text-secondaryTextColor`,
-	label: `${GeneralInputStyle.label} text-secondaryTextColor`,
-	field: `${GeneralInputStyle.field} w-1/2 pl-[38px] text-right`,
-};
-
-const FcCurrencyInputField = ({ label, placeholder, minValue, maxValue, isRequired, isDisabled, isReadonly }: FNumberOrCurrencyInputComponentProps) => {
+const FcCurrencyInputField = ({ label, name, placeholder, minValue, maxValue, isRequired, isDisabled, isReadonly, validationText }: FNumberOrCurrencyInputComponentProps) => {
 	const [inputID, setInputID] = useState('');
-	const [name, setName] = useState('');
 
 	useEffect(() => {
 		const formattedLabel = label?.toLowerCase().split(' ').join('-') ?? '_default';
 
 		setInputID(formattedLabel.concat('-id'));
-		setName(formattedLabel.concat('-input'));
 	}, [inputID, label]);
 
 	const formatCurrency = (value: string): string => {
@@ -42,28 +34,34 @@ const FcCurrencyInputField = ({ label, placeholder, minValue, maxValue, isRequir
 		<div>
 			<label
 				htmlFor={inputID}
-				className={CurrencyInputStyle.label}>
+				className={inputElementStyle['input-label']}>
 				{label} {isRequired ? '*' : ''}
 			</label>
 			<div className='relative'>
-				<div className={CurrencyInputStyle.icon}>
+				<div className={inputElementStyle['input-icon']}>
 					<i className='fa-solid fa-rupiah-sign'></i>
 				</div>
 				<input
 					type='number'
 					name={name}
 					id={inputID}
-					className={CurrencyInputStyle.field}
-					placeholder={placeholder}
+					className={`${inputElementStyle['input-field']} ${inputElementStyle['currency-input-field']}`}
+					placeholder={placeholder ?? 'Type here..'}
 					min={minValue}
 					max={maxValue}
 					step={0.1}
-					required={isRequired}
-					readOnly={isReadonly}
-					disabled={isDisabled}
+					required={isRequired ?? false}
+					readOnly={isReadonly ?? false}
+					disabled={isDisabled ?? false}
 					onChange={currencyInputChangeHandler}
 				/>
 			</div>
+			<span
+				id={`${name}-error`}
+				style={{ display: 'none' }}
+				className='block w-full text-right text-RedButton text-xs'>
+				{validationText ?? 'Input is not valid!'}
+			</span>
 		</div>
 	);
 };

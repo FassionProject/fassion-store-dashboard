@@ -68,10 +68,10 @@ const FcFileInputField = ({ label, helperText, isRequired, isDisabled, isHidden,
 				id={inputID}
 				className={fileInputStyle.field}
 				aria-describedby={`${inputID}-aria-describedby`}
-				required={isRequired}
-				readOnly={isReadonly}
+				required={isRequired ?? false}
+				readOnly={isReadonly ?? false}
 				hidden={isHidden ?? false}
-				disabled={isDisabled}
+				disabled={isDisabled ?? false}
 			/>
 			<div
 				className={fileInputStyle.helperText}

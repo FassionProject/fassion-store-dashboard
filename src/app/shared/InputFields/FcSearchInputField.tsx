@@ -1,12 +1,6 @@
-import { GeneralInputStyle } from '@/assets/styles/inputStyle';
 import { FInputComponentProps } from '@/lib/definition/props';
 import { useEffect, useState } from 'react';
-
-const TextInputStyle = {
-	icon: `${GeneralInputStyle.icon} pl-3 text-secondaryTextColor`,
-	label: `${GeneralInputStyle.label} text-secondaryTextColor`,
-	field: `${GeneralInputStyle.field} w-full pl-[38px]`,
-};
+import inputElementStyle from 'assets/styles/components/FsInputFields.module.css';
 
 const FcSearchInputField = ({ label, name, placeholder, icon, isRequired, isDisabled, isReadonly }: FInputComponentProps) => {
 	const [inputID, setInputID] = useState('');
@@ -20,16 +14,16 @@ const FcSearchInputField = ({ label, name, placeholder, icon, isRequired, isDisa
 
 	return (
 		<div className='relative'>
-			<div className={TextInputStyle.icon}>{icon ? icon : <i className='fa-solid fa-font'></i>}</div>
+			<div className={inputElementStyle['input-icon']}>{icon ? icon : <i className='fa-solid fa-font'></i>}</div>
 			<input
 				type='search'
 				name={name}
 				id={inputID}
-				className={TextInputStyle.field}
-				placeholder={placeholder}
-				required={isRequired}
-				readOnly={isReadonly}
-				disabled={isDisabled}
+				className={`${inputElementStyle['input-field']} ${inputElementStyle['search-input-field']}`}
+				placeholder={placeholder ?? 'Type here..'}
+				required={isRequired ?? false}
+				readOnly={isReadonly ?? false}
+				disabled={isDisabled ?? false}
 			/>
 		</div>
 	);

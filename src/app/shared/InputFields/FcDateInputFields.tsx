@@ -1,14 +1,8 @@
-import { GeneralInputStyle } from '@/assets/styles/inputStyle';
+import inputElementStyle from 'assets/styles/components/FsInputFields.module.css';
 import { FInputComponentProps } from '@/lib/definition/props';
 import { useEffect, useState } from 'react';
 
-const DateInputStyle = {
-	icon: `${GeneralInputStyle.icon} pl-3 text-secondaryTextColor`,
-	label: `${GeneralInputStyle.label} text-secondaryTextColor`,
-	field: `${GeneralInputStyle.field} w-1/2 pl-[38px]`,
-};
-
-const FcDateInputFields = ({ label, placeholder, isRequired, isDisabled, isReadonly }: FInputComponentProps) => {
+const FcDateInputFields = ({ label, placeholder, isRequired, isDisabled, isReadonly, validationText }: FInputComponentProps) => {
 	const [inputID, setInputID] = useState('');
 	const [name, setName] = useState('');
 
@@ -23,24 +17,30 @@ const FcDateInputFields = ({ label, placeholder, isRequired, isDisabled, isReado
 		<div>
 			<label
 				htmlFor={inputID}
-				className={DateInputStyle.label}>
+				className={inputElementStyle['input-label']}>
 				{label} {isRequired ? '*' : ''}
 			</label>
 			<div className='relative'>
-				<div className={DateInputStyle.icon}>
+				<div className={inputElementStyle['input-icon']}>
 					<i className='fa-solid fa-calendar-days'></i>
 				</div>
 				<input
 					type='date'
 					name={name}
 					id={inputID}
-					className={DateInputStyle.field}
-					placeholder={placeholder}
-					required={isRequired}
-					readOnly={isReadonly}
-					disabled={isDisabled}
+					className={`${inputElementStyle['input-field']} ${inputElementStyle['date-input-field']}`}
+					placeholder={placeholder ?? 'Type here..'}
+					required={isRequired ?? false}
+					readOnly={isReadonly ?? false}
+					disabled={isDisabled ?? false}
 				/>
 			</div>
+			<span
+				id={`${name}-error`}
+				style={{ display: 'none' }}
+				className='block w-full text-right text-RedButton text-xs'>
+				{validationText ?? 'Input is not valid!'}
+			</span>
 		</div>
 	);
 };

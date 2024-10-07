@@ -1,14 +1,8 @@
-import { GeneralInputStyle } from '@/assets/styles/inputStyle';
+import inputElementStyle from 'assets/styles/components/FsInputFields.module.css';
 import { FInputComponentProps } from '@/lib/definition/props';
 import { useEffect, useState } from 'react';
 
-const PhoneInputStyle: { label: string; icon: string; field: string } = {
-	icon: `${GeneralInputStyle.icon} pl-3 text-secondaryTextColor`,
-	label: `${GeneralInputStyle.label} text-secondaryTextColor`,
-	field: `${GeneralInputStyle.field} w-1/2 pl-[38px]`,
-};
-
-const FcPhoneInputField = ({ label, placeholder, isRequired, isDisabled, isReadonly }: FInputComponentProps) => {
+const FcPhoneInputField = ({ label, placeholder, isRequired, isDisabled, isReadonly, validationText }: FInputComponentProps) => {
 	const [inputID, setInputID] = useState('');
 	const [name, setName] = useState('');
 
@@ -23,25 +17,31 @@ const FcPhoneInputField = ({ label, placeholder, isRequired, isDisabled, isReado
 		<div>
 			<label
 				htmlFor={inputID}
-				className={PhoneInputStyle.label}>
+				className={inputElementStyle['input-label']}>
 				{label} {isRequired ? '*' : ''}
 			</label>
 			<div className='relative'>
-				<div className={PhoneInputStyle.icon}>
+				<div className={inputElementStyle['input-icon']}>
 					<i className='fa-solid fa-phone'></i>
 				</div>
 				<input
 					type='tel'
 					name={name}
 					id={inputID}
-					className={PhoneInputStyle.field}
+					className={`${inputElementStyle['input-field']} ${inputElementStyle['phone-input-field']}`}
 					placeholder={placeholder ?? '0812-3456-7890'}
-					required={isRequired}
-					readOnly={isReadonly}
-					disabled={isDisabled}
+					required={isRequired ?? false}
+					readOnly={isReadonly ?? false}
+					disabled={isDisabled ?? false}
 					pattern='^0\d{2,3}[\s-]?\d{3,4}[\s-]?\d{4}$'
 				/>
 			</div>
+			<span
+				id={`${name}-error`}
+				style={{ display: 'none' }}
+				className='block w-full text-right text-RedButton text-xs'>
+				{validationText ?? 'Input is not valid!'}
+			</span>
 		</div>
 	);
 };

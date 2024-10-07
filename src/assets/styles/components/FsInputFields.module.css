@@ -1,39 +1,98 @@
-.text-field-label {
-	display: block;
-	margin-bottom: 0.5rem;
-	font-size: var(--fontSize-sm);
+.input-icon {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	display: flex;
+	align-items: center;
+	pointer-events: none;
 	padding-left: 0.75rem;
 	color: var(--secondary-text);
 }
 
-.text-field-icon {
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 1rem;
-    color: var(--secondary-text);
-	display: flex;
-	align-items: center;
-	pointer-events: none;
+.input-label {
+	display: block;
+	margin-bottom: 0.5rem;
+	font-size: 0.875rem;
+	color: var(--secondary-text);
 }
 
-.text-field-input {
+.input-field {
 	display: block;
-	padding-top: 0.75rem; /* py-3: 0.75rem padding atas dan bawah */
+	padding-top: 0.75rem;
 	padding-bottom: 0.75rem;
 	background-color: #f9fafb;
-	border: 1px solid #d9e2ec; /* Border color menggunakan warna custom --primary-100 */
-	font-size: 0.875rem; /* text-sm sesuai dengan font size */
-	color: #7b7f8a; /* Untuk placeholder */
-	border-radius: 0.5rem; /* rounded-lg: border-radius 0.5rem */
-	width: 100%;
-	padding-left: 2.5rem; /* pl-[30.5rem]: padding kiri 30.5rem */
-
-	/* Focus state */
+	border: 1px solid var(--primary-100); /* Sesuaikan dengan warna kustom */
+	font-size: 0.875rem;
+	border-radius: 0.5rem;
+	color: var(--secondaryTextColor); /* Sesuaikan dengan warna kustom */
 	outline: none;
 }
 
-.text-field-input:focus {
-	border-color: #3b82f6; /* focus:border-blue-500 */
-	box-shadow: 0 0 0 2px #93c5fd; /* focus:ring-2 focus:ring-blue-300 */
+.input-field::placeholder {
+	color: var(--secondaryTextColor); /* Sesuaikan dengan warna kustom */
 }
+
+.input-field:focus {
+	border-color: #3b82f6; /* Sesuaikan jika #blue-500 */
+	box-shadow: 0 0 0 2px #93c5fd; /* Sesuaikan jika #blue-300 */
+}
+
+/* #region number input - field style */
+.number-input-field {
+	width: 33.333%;
+	padding-left: 38px;
+	text-align: right;
+}
+
+.number-input-field:valid {
+	border: 1px solid var(--green-button);
+}
+
+.number-input-field:invalid {
+	border: 1px solid var(--red-button);
+}
+/* #endregion number input - field style */
+
+/* #region currency input - field style */
+.currency-input-field {
+	width: 50%;
+	padding-left: 38px;
+	text-align: right;
+}
+/* #endregion currency input - field style */
+
+/* #region date input - field style */
+.date-input-field {
+	width: 50%;
+	padding-left: 38px;
+}
+/* #endregion date input - field style */
+
+/* #region phone input - field style */
+.phone-input-field {
+	width: 50%;
+	padding-left: 38px;
+}
+/* #endregion phone input - field style */
+
+/* #region search input - field style */
+.search-input-field {
+	width: 100%;
+	padding-left: 38px;
+}
+/* #endregion search input - field style */
+
+/* #region text input - field style */
+.text-input-field {
+	width: 100%;
+	padding-left: 38px;
+}
+/* #endregion text input - field style */
+
+/* #region textarea input - field style */
+.textarea-input-field {
+	width: 100%;
+	padding-left: 38px;
+}
+/* #endregion textarea input - field style */
