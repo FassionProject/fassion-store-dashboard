@@ -3,19 +3,10 @@ import { FTextInputComponentProps } from '@/lib/definition/props';
 import { useEffect, useState } from 'react';
 
 const FcTextInputField = ({ label, name, placeholder, icon, minLength, maxLength, isRequired, isDisabled, isReadonly, validationText }: FTextInputComponentProps) => {
-	const [inputID, setInputID] = useState('');
-
-	// Set ID & Name of <input/> element
-	useEffect(() => {
-		const formattedLabel = label?.toLowerCase().split(' ').join('-') ?? '_default';
-
-		setInputID(formattedLabel.concat('-id'));
-	}, [label]);
-
 	return (
 		<div>
 			<label
-				htmlFor={inputID}
+				htmlFor={`${name}-input-id`}
 				className={inputElementStyle['input-label']}>
 				{label} {isRequired ? '*' : ''}
 			</label>
@@ -24,7 +15,7 @@ const FcTextInputField = ({ label, name, placeholder, icon, minLength, maxLength
 				<input
 					type='text'
 					name={name}
-					id={inputID}
+					id={`${name}-input-id`}
 					className={`${inputElementStyle['input-field']} ${inputElementStyle['text-input-field']}`}
 					autoComplete='false'
 					autoCorrect='false'

@@ -33,7 +33,7 @@ const FcCurrencyInputField = ({ label, name, placeholder, minValue, maxValue, is
 	return (
 		<div>
 			<label
-				htmlFor={inputID}
+				htmlFor={`${name}-input-id`}
 				className={inputElementStyle['input-label']}>
 				{label} {isRequired ? '*' : ''}
 			</label>
@@ -44,7 +44,7 @@ const FcCurrencyInputField = ({ label, name, placeholder, minValue, maxValue, is
 				<input
 					type='number'
 					name={name}
-					id={inputID}
+					id={`${name}-input-id`}
 					className={`${inputElementStyle['input-field']} ${inputElementStyle['currency-input-field']}`}
 					placeholder={placeholder ?? 'Type here..'}
 					min={minValue}

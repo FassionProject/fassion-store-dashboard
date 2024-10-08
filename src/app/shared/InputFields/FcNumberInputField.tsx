@@ -14,7 +14,7 @@ const FcNumberInputField = ({ label, name, placeholder, minValue, maxValue, isRe
 	return (
 		<div>
 			<label
-				htmlFor={inputID}
+				htmlFor={`${name}-input-id`}
 				className={inputElementStye['input-label']}>
 				{label} {isRequired ? '*' : ''}
 			</label>
@@ -25,7 +25,7 @@ const FcNumberInputField = ({ label, name, placeholder, minValue, maxValue, isRe
 				<input
 					type='number'
 					name={name}
-					id={inputID}
+					id={`${name}-input-id`}
 					className={`${inputElementStye['input-field']} ${inputElementStye['number-input-field']}`}
 					placeholder={placeholder ?? ''}
 					min={minValue}

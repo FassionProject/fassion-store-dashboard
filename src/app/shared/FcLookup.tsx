@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import FcButton from './FcButton';
 import FcModal from './FcModal';
+import FcDataTable from './FcDataTable';
+import { FInputComponentProps } from '@/lib/definition/props';
 
-const FcLookup = () => {
+const FcLookup = ({ name }: FInputComponentProps) => {
 	const [openModal, setOpenModal] = useState(false);
+	const [inputValue, setInputValue] = useState(null);
 
 	return (
 		<>
@@ -14,14 +17,17 @@ const FcLookup = () => {
 			/>
 			<input
 				type='text'
-				value={''}
+				value={inputValue ?? '_default-value'}
+				name={name}
 				hidden
 			/>
 
 			<FcModal
 				openModal={openModal}
 				setOpenModal={setOpenModal}
-			/>
+				title='Hello Panda'>
+				<FcDataTable />
+			</FcModal>
 		</>
 	);
 };

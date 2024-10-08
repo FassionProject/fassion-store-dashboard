@@ -3,7 +3,7 @@ import { FeButtonStyleType } from '../enums';
 type NullOrUndefined = null | undefined;
 
 export type FInputComponentProps = {
-	label: string;
+	label?: string;
 	name: string;
 	placeholder?: string | NullOrUndefined;
 	helperText?: string | NullOrUndefined;

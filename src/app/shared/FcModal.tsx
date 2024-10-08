@@ -1,17 +1,14 @@
 import { Modal } from 'flowbite-react';
-import FcDataTable from './FcDataTable';
 
-const FcModal = ({ openModal, setOpenModal }: { openModal: boolean; setOpenModal: React.Dispatch<React.SetStateAction<boolean>> }) => {
+const FcModal = ({ openModal, setOpenModal, title, children }: { openModal: boolean; setOpenModal: React.Dispatch<React.SetStateAction<boolean>>; title: string; children: React.ReactNode }) => {
 	return (
 		<Modal
 			dismissible
 			show={openModal}
 			size={'6xl'}
 			onClose={() => setOpenModal(false)}>
-			<Modal.Header>Terms of Service</Modal.Header>
-			<Modal.Body>
-				<FcDataTable />
-			</Modal.Body>
+			<Modal.Header>{title}</Modal.Header>
+			<Modal.Body>{children}</Modal.Body>
 		</Modal>
 	);
 };

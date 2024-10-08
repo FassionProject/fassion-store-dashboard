@@ -18,7 +18,7 @@ const FcSearchInputField = ({ label, name, placeholder, icon, isRequired, isDisa
 			<input
 				type='search'
 				name={name}
-				id={inputID}
+				id={`${name}-input-id`}
 				className={`${inputElementStyle['input-field']} ${inputElementStyle['search-input-field']}`}
 				placeholder={placeholder ?? 'Type here..'}
 				required={isRequired ?? false}

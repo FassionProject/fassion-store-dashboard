@@ -8,7 +8,11 @@ import FcSearchInputField from './InputFields/FcSearchInputField';
 
 import dataTableStyle from 'assets/styles/components/FsDataTable.module.css';
 
-const FcDataTable = ({ data }: { data: { items: Array<ProductModel> | null } }) => {
+interface FcDataTableProps<T> {
+	data: Array<T> | null;
+}
+
+const FcDataTable = <T extends object>({ data }: FcDataTableProps<T>) => {
 	const router = useRouter();
 	const scrollPosition = useContext(ScrollContext);
 
@@ -60,7 +64,7 @@ const FcDataTable = ({ data }: { data: { items: Array<ProductModel> | null } }) 
 					</tr>
 				</thead>
 				<tbody>
-					{data.items == null || data.items.length == 0 ? (
+					{data == null || data.length == 0 ? (
 						<tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700'>
 							<th
 								scope='row'
@@ -72,7 +76,7 @@ const FcDataTable = ({ data }: { data: { items: Array<ProductModel> | null } }) 
 							<td className='px-6 py-4'>null</td>
 						</tr>
 					) : (
-						(data.items as Array<ProductModel>).map(({ name, stock, price }, index) => (
+						(data as Array<ProductModel>).map(({ name, stock, price }, index) => (
 							<tr
 								key={index}
 								className='bg-white border-b dark:bg-gray-800 dark:border-gray-700'>

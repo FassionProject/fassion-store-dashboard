@@ -14,7 +14,7 @@ const FcTextAreaInputField = ({ label, name, placeholder, icon, isRequired, isDi
 	return (
 		<div>
 			<label
-				htmlFor={inputID}
+				htmlFor={`${name}-input-id`}
 				className={inputElementStyle['input-label']}>
 				{label} {isRequired ? '*' : ''}
 			</label>
@@ -22,7 +22,7 @@ const FcTextAreaInputField = ({ label, name, placeholder, icon, isRequired, isDi
 				<div className={inputElementStyle['input-icon']}>{icon ? icon : <i className='fa-solid fa-font'></i>}</div>
 				<textarea
 					name={name}
-					id={inputID}
+					id={`${name}-input-id`}
 					className={`${inputElementStyle['input-field']} ${inputElementStyle['textarea-input-field']}`}
 					placeholder={placeholder ?? 'Type here..'}
 					required={isRequired ?? false}

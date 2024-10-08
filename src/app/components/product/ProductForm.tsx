@@ -31,29 +31,43 @@ const ProductForm = ({ scrollPosition }: { scrollPosition: number }) => {
 	const handleFormSubmit = (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 
-		Array.from(((event.target as HTMLInputElement).children[1] as HTMLInputElement).children).forEach((element) => {
-			const isValid: boolean = ((element as HTMLInputElement).children[1] as HTMLInputElement).reportValidity();
+		const formData = new FormData(event.target as HTMLFormElement);
 
-			if (isValid) {
-				console.log('Valid');
+		if (checkFormValidation(event.target as HTMLFormElement, formData)) {
+			alert('Form valid');
+		} else {
+			alert('Form invalid');
+		}
+	};
+
+	const checkFormValidation = (form: HTMLFormElement, formData: FormData) => {
+		let isValid = false;
+		const inputWrapper = form.querySelector('div#input-wrapper');
+
+		Array.from(formData.keys()).forEach((el) => {
+			const inputElement: HTMLInputElement = inputWrapper?.querySelector(`#${el}-input-id`) as HTMLInputElement;
+			const errorElement: HTMLElement = inputWrapper?.querySelector(`#${el}-error`) as HTMLElement;
+			const isInputValid: boolean = inputElement.checkValidity();
+
+			if (isInputValid) {
+				isValid = true;
 			} else {
-				console.log('Tidak Valid');
-				const inputName = ((element as HTMLInputElement).children[1] as HTMLInputElement).getAttribute('name');
-				console.log(inputName);
+				errorElement.style.display = 'block';
+				inputElement.style.border = '1px solid red';
+				inputElement.style.color = 'red';
+
+				isValid = false;
 			}
 		});
 
-		// const formData = new FormData(event.target as HTMLFormElement);
-
-		// formData.entries().forEach((data) => {
-		// 	console.log(data);
-		// });
+		return isValid;
 	};
 
 	return (
 		<form
 			onSubmit={handleFormSubmit}
-			id='product-form-element'>
+			id='product-form-element'
+			noValidate>
 			<div className={`mb-4 bg-white bg-opacity-10 backdrop-blur-sm flex gap-2 sticky top-0 z-10 p-2 rounded-lg ${scrollPosition > 0 ? 'border-slate-200 border-[1px]' : ''}`}>
 				<FcButton
 					label='Simpan'
@@ -68,7 +82,9 @@ const ProductForm = ({ scrollPosition }: { scrollPosition: number }) => {
 				/>
 			</div>
 
-			<div className='grid gap-4 grid-cols-1 lg:grid-cols-1'>
+			<div
+				className='grid gap-4 grid-cols-1 lg:grid-cols-1'
+				id='input-wrapper'>
 				<FcTextInputField
 					name='name'
 					label='Name'

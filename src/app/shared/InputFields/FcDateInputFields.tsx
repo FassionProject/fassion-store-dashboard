@@ -16,7 +16,7 @@ const FcDateInputFields = ({ label, placeholder, isRequired, isDisabled, isReado
 	return (
 		<div>
 			<label
-				htmlFor={inputID}
+				htmlFor={`${name}-input-id`}
 				className={inputElementStyle['input-label']}>
 				{label} {isRequired ? '*' : ''}
 			</label>
@@ -27,7 +27,7 @@ const FcDateInputFields = ({ label, placeholder, isRequired, isDisabled, isReado
 				<input
 					type='date'
 					name={name}
-					id={inputID}
+					id={`${name}-input-id`}
 					className={`${inputElementStyle['input-field']} ${inputElementStyle['date-input-field']}`}
 					placeholder={placeholder ?? 'Type here..'}
 					required={isRequired ?? false}

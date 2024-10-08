@@ -59,13 +59,13 @@ const FcFileInputField = ({ label, helperText, isRequired, isDisabled, isHidden,
 		<div>
 			<label
 				className={fileInputStyle.label}
-				htmlFor={inputID}>
+				htmlFor={`${name}-input-id`}>
 				{label} {isRequired ? '*' : ''}
 			</label>
 			<input
 				name={name}
 				type='file'
-				id={inputID}
+				id={`${name}-input-id`}
 				className={fileInputStyle.field}
 				aria-describedby={`${inputID}-aria-describedby`}
 				required={isRequired ?? false}

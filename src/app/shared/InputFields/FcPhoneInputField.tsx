@@ -16,7 +16,7 @@ const FcPhoneInputField = ({ label, placeholder, isRequired, isDisabled, isReado
 	return (
 		<div>
 			<label
-				htmlFor={inputID}
+				htmlFor={`${name}-input-id`}
 				className={inputElementStyle['input-label']}>
 				{label} {isRequired ? '*' : ''}
 			</label>
@@ -27,7 +27,7 @@ const FcPhoneInputField = ({ label, placeholder, isRequired, isDisabled, isReado
 				<input
 					type='tel'
 					name={name}
-					id={inputID}
+					id={`${name}-input-id`}
 					className={`${inputElementStyle['input-field']} ${inputElementStyle['phone-input-field']}`}
 					placeholder={placeholder ?? '0812-3456-7890'}
 					required={isRequired ?? false}
