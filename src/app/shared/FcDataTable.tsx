@@ -1,5 +1,4 @@
 import { ScrollContext } from '@/hooks/context/ScrollContextProvider';
-import { ProductModel } from '@/lib/model';
 import { useRouter } from 'next/navigation';
 import { useContext } from 'react';
 import FcButton from './FcButton';
@@ -10,9 +9,10 @@ import dataTableStyle from 'assets/styles/components/FsDataTable.module.css';
 
 interface FcDataTableProps<T> {
 	data: Array<T> | null;
+	columns: Array<{ title: string; property: string }>;
 }
 
-const FcDataTable = <T extends object>({ data }: FcDataTableProps<T>) => {
+const FcDataTable = <T extends object>({ data, columns }: FcDataTableProps<T>) => {
 	const router = useRouter();
 	const scrollPosition = useContext(ScrollContext);
 
@@ -41,21 +41,15 @@ const FcDataTable = <T extends object>({ data }: FcDataTableProps<T>) => {
 			<table className='w-full text-sm text-left text-gray-500 rounded-4 relative'>
 				<thead className={dataTableStyle['table-head']}>
 					<tr>
-						<th
-							scope='col'
-							className='px-6 py-3 rounded-l-md'>
-							Product name
-						</th>
-						<th
-							scope='col'
-							className='px-6 py-3'>
-							Stock
-						</th>
-						<th
-							scope='col'
-							className='px-6 py-3'>
-							Price
-						</th>
+						{columns.map(({ title }, index) => (
+							<th
+								key={index}
+								scope='col'
+								className='px-6 py-3 rounded-l-md'>
+								{title}
+							</th>
+						))}
+
 						<th
 							scope='col'
 							className='px-6 py-3 rounded-r-md'>
@@ -64,40 +58,25 @@ const FcDataTable = <T extends object>({ data }: FcDataTableProps<T>) => {
 					</tr>
 				</thead>
 				<tbody>
-					{data == null || data.length == 0 ? (
-						<tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700'>
-							<th
-								scope='row'
-								className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white'>
-								null
-							</th>
-							<td className='px-6 py-4'>null</td>
-							<td className='px-6 py-4'>null</td>
-							<td className='px-6 py-4'>null</td>
-						</tr>
-					) : (
-						(data as Array<ProductModel>).map(({ name, stock, price }, index) => (
-							<tr
-								key={index}
-								className='bg-white border-b dark:bg-gray-800 dark:border-gray-700'>
-								<th
-									scope='row'
-									className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white'>
-									{name}
-								</th>
-								<td className='px-6 py-4'>{stock}</td>
-								<td className='px-6 py-4'>${price}</td>
-								<td className='px-6 py-4'>
-									<FcButton
-										type='link'
-										href={`/dashboard/product/${name?.split(' ').join('-')}_${index}`}
-										classStyle={FeButtonStyleType.INFO}
-										label='Edit'
-									/>
+					{data?.map((row, rowIndex) => (
+						<tr key={rowIndex}>
+							{columns.map(({ property }, colIndex) => (
+								<td
+									key={colIndex}
+									className='px-6 py-4'>
+									{String(row[property as keyof T])}
 								</td>
-							</tr>
-						))
-					)}
+							))}
+							<td className='px-6 py-4'>
+								<FcButton
+									label='Edit'
+									classStyle={FeButtonStyleType.INFO}
+									type='link'
+									href={`/dashboard/product/${String(row['id' as keyof T])}`}
+								/>
+							</td>
+						</tr>
+					))}
 				</tbody>
 			</table>
 

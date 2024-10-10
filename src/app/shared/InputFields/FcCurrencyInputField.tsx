@@ -4,6 +4,7 @@ import { ChangeEvent, useEffect, useState } from 'react';
 
 const FcCurrencyInputField = ({ label, name, placeholder, minValue, maxValue, isRequired, isDisabled, isReadonly, validationText }: FNumberOrCurrencyInputComponentProps) => {
 	const [inputID, setInputID] = useState('');
+	const [inputValue, setInputValue] = useState('0.0');
 
 	useEffect(() => {
 		const formattedLabel = label?.toLowerCase().split(' ').join('-') ?? '_default';
@@ -11,21 +12,29 @@ const FcCurrencyInputField = ({ label, name, placeholder, minValue, maxValue, is
 		setInputID(formattedLabel.concat('-id'));
 	}, [inputID, label]);
 
-	const formatCurrency = (value: string): string => {
-		const numberValue = value.replace(/\D/g, '');
+	function deformatCurrency(value: string) {
+		const split1: [string, string] = [value.split('.')[0], value.split('.')[1]];
+		const secValue = Number(split1[0].split(',').join('') + '.' + split1[1]);
 
-		const formattedValue = new Intl.NumberFormat('en-US').format(parseFloat(numberValue) || 0);
+		return secValue;
+	}
+
+	const formatCurrency = (value: number): string => {
+		const formattedValue = new Intl.NumberFormat('en-US').format(value || 0);
 
 		return formattedValue;
 	};
 
-	const deformatCurrency = (value: string): string => value.replace(/\./g, '').replace(',', '.');
-
 	const currencyInputChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
 		const value = event.target.value;
 
-		const deformattedValue = deformatCurrency(value);
-		console.log(formatCurrency(deformattedValue));
+		console.log(event);
+
+		// const pattern = /[0-9.]/g;
+		// console.log(pattern.test(value), value);
+
+		// const deformattedValue = deformatCurrency(value);
+		// console.log(formatCurrency(deformattedValue));
 
 		// setInputValue(formatCurrency(deformattedValue));
 	};
@@ -49,7 +58,9 @@ const FcCurrencyInputField = ({ label, name, placeholder, minValue, maxValue, is
 					placeholder={placeholder ?? 'Type here..'}
 					min={minValue}
 					max={maxValue}
+					value={inputValue}
 					step={0.1}
+					onKeyDown={(event) => console.log(event)}
 					required={isRequired ?? false}
 					readOnly={isReadonly ?? false}
 					disabled={isDisabled ?? false}

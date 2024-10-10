@@ -28,7 +28,14 @@ const ProductList = () => {
 				</div>
 			) : (
 				<div>
-					<FcDataTable data={{ items: listData }} />
+					<FcDataTable
+						data={listData}
+						columns={[
+							{ title: 'Name', property: 'name' },
+							{ title: 'Harga', property: 'price' },
+							{ title: 'Stok barang', property: 'stock' },
+						]}
+					/>
 				</div>
 			)}
 		</div>

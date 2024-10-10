@@ -9,24 +9,27 @@ import { useRouter } from 'next/navigation';
 import FcTextAreaInputField from '@/app/shared/InputFields/FcTextAreaInputField';
 import FcCurrencyInputField from '@/app/shared/InputFields/FcCurrencyInputField';
 import FcNumberInputField from '@/app/shared/InputFields/FcNumberInputField';
+import { bindFormValues, checkFormValidation } from '@/utils';
+import { getProducts } from '@/data/product';
 
-const ProductForm = ({ scrollPosition }: { scrollPosition: number }) => {
-	const [productFormData, setProductFormData] = useState<ProductModel>({
-		storeId: '12312313',
-		categoryId: '123123123',
-		tagsId: [''],
-		name: 'Product Name 1',
-		description: 'Product description 1',
-		price: 0,
-		stock: 0,
-	});
+const ProductForm = ({ scrollPosition, idProduct }: { scrollPosition: number; idProduct: string }) => {
 	const router = useRouter();
+	const [productFormData, setProductFormData] = useState<ProductModel | null>(null);
 
 	useEffect(() => {
-		// setProductFormData();, ngambil data dari API
-		// assign value ke semua <input/> element dari form submit
-		// bindFormValues(productFormData, '#product-form-element');
-	});
+		getProducts().forEach((product) => {
+			if (product.id === idProduct) {
+				setProductFormData(product as ProductModel);
+			}
+		});
+	}, [idProduct]);
+
+	// Effect untuk melacak perubahan pada productFormData
+	useEffect(() => {
+		if (productFormData) {
+			bindFormValues(productFormData, '#product-form-element');
+		}
+	}, [productFormData]);
 
 	const handleFormSubmit = (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
@@ -40,28 +43,7 @@ const ProductForm = ({ scrollPosition }: { scrollPosition: number }) => {
 		}
 	};
 
-	const checkFormValidation = (form: HTMLFormElement, formData: FormData) => {
-		let isValid = false;
-		const inputWrapper = form.querySelector('div#input-wrapper');
-
-		Array.from(formData.keys()).forEach((el) => {
-			const inputElement: HTMLInputElement = inputWrapper?.querySelector(`#${el}-input-id`) as HTMLInputElement;
-			const errorElement: HTMLElement = inputWrapper?.querySelector(`#${el}-error`) as HTMLElement;
-			const isInputValid: boolean = inputElement.checkValidity();
-
-			if (isInputValid) {
-				isValid = true;
-			} else {
-				errorElement.style.display = 'block';
-				inputElement.style.border = '1px solid red';
-				inputElement.style.color = 'red';
-
-				isValid = false;
-			}
-		});
-
-		return isValid;
-	};
+	if (!productFormData) return <div>Loading..</div>;
 
 	return (
 		<form
@@ -107,7 +89,7 @@ const ProductForm = ({ scrollPosition }: { scrollPosition: number }) => {
 					name='description'
 					label='Description'
 					placeholder='Barang yang paling yahutt..'
-					isRequired
+					// isRequired
 				/>
 				<FcCurrencyInputField
 					label='Price'
