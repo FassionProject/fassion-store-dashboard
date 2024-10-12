@@ -96,3 +96,11 @@
 	padding-left: 38px;
 }
 /* #endregion textarea input - field style */
+
+/* #region text input - field style */
+.lookup-input-field {
+	width: 100%;
+	padding-left: 38px;
+	cursor: pointer;
+}
+/* #endregion text input - field style */

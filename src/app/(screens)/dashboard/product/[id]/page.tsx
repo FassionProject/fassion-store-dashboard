@@ -1,6 +1,6 @@
 'use client';
 
-import ProductForm from '@/app/components/product/ProductForm';
+import FcProductForm from '@/app/(widgets)/layouts/product/FcProductForm';
 import { ScrollContext } from '@/hooks/context/ScrollContextProvider';
 import { useContext } from 'react';
 
@@ -8,7 +8,7 @@ const ProductDetailPage = ({ params }: { params: { id: string } }) => {
 	const scrollPosition = useContext(ScrollContext);
 
 	return (
-		<ProductForm
+		<FcProductForm
 			scrollPosition={scrollPosition}
 			idProduct={params.id}
 		/>

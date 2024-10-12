@@ -37,3 +37,13 @@ export type FButtonComponentProps = {
 	classStyle?: FeButtonStyleType;
 	clickFn?: (param: React.MouseEvent) => void;
 };
+
+export type FcDataTableProps<T> = {
+	data: Array<T> | null;
+	columns: Array<{ title: string; property: string }>;
+};
+
+export type FLookupInputComponentProps = FInputComponentProps  & {
+		value: string;
+		clickFn: (param: React.MouseEvent) => void;
+	};

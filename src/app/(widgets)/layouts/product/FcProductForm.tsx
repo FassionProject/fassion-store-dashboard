@@ -1,20 +1,21 @@
 'use client';
 
 import { FormEvent, useEffect, useState } from 'react';
-import FcTextInputField from '../../shared/InputFields/FcTextInputField';
 import FcButton from '../../shared/FcButton';
 import { FeButtonStyleType } from '@/lib/enums';
 import { ProductModel } from '@/lib/model';
 import { useRouter } from 'next/navigation';
-import FcTextAreaInputField from '@/app/shared/InputFields/FcTextAreaInputField';
-import FcCurrencyInputField from '@/app/shared/InputFields/FcCurrencyInputField';
-import FcNumberInputField from '@/app/shared/InputFields/FcNumberInputField';
 import { bindFormValues, checkFormValidation } from '@/utils';
 import { getProducts } from '@/data/product';
+import FcLookupInputField from '../../shared/InputFields/FcLookupInputField';
+import FcModal from '../../shared/FcModal';
+import Loading from '@/assets/animation/loading-animation.gif';
+import Image from 'next/image';
 
-const ProductForm = ({ scrollPosition, idProduct }: { scrollPosition: number; idProduct: string }) => {
+const FcProductForm = ({ scrollPosition, idProduct }: { scrollPosition: number; idProduct: string }) => {
 	const router = useRouter();
 	const [productFormData, setProductFormData] = useState<ProductModel | null>(null);
+	const [isModalOpen, setIsModalOpen] = useState(false);
 
 	useEffect(() => {
 		getProducts().forEach((product) => {
@@ -43,7 +44,16 @@ const ProductForm = ({ scrollPosition, idProduct }: { scrollPosition: number; id
 		}
 	};
 
-	if (!productFormData) return <div>Loading..</div>;
+	if (!productFormData)
+		return (
+			<div className='h-full flex items-center justify-center'>
+				<Image
+					src={Loading}
+					alt='loading...'
+					width={100}
+				/>
+			</div>
+		);
 
 	return (
 		<form
@@ -67,45 +77,22 @@ const ProductForm = ({ scrollPosition, idProduct }: { scrollPosition: number; id
 			<div
 				className='grid gap-4 grid-cols-1 lg:grid-cols-1'
 				id='input-wrapper'>
-				<FcTextInputField
-					name='name'
-					label='Name'
-					placeholder='Judah Dasuki'
-					isRequired
-				/>
-				<FcTextInputField
-					name='storeId'
-					label='Store ID'
-					placeholder='1234asdf'
-					isRequired
-				/>
-				<FcTextInputField
-					name='categoryId'
-					label='Category ID'
-					placeholder='asdf3423'
-					isRequired
-				/>
-				<FcTextAreaInputField
-					name='description'
-					label='Description'
-					placeholder='Barang yang paling yahutt..'
-					// isRequired
-				/>
-				<FcCurrencyInputField
-					label='Price'
-					name='price'
-					placeholder='1,400,000'
-					isRequired
-				/>
-				<FcNumberInputField
-					label='Stock'
-					name='stock'
-					placeholder='1'
-					isRequired
+				<FcLookupInputField
+					label='Product Tag'
+					name='product-tag'
+					value='asdf'
+					clickFn={() => setIsModalOpen(true)}
 				/>
 			</div>
+
+			<FcModal
+				title='Aduhhh'
+				openModal={isModalOpen}
+				setOpenModal={setIsModalOpen}>
+				<p>helloo panda</p>
+			</FcModal>
 		</form>
 	);
 };
 
-export default ProductForm;
+export default FcProductForm;

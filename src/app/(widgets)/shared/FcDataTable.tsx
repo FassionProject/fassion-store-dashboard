@@ -6,13 +6,9 @@ import { FeButtonStyleType } from '@/lib/enums';
 import FcSearchInputField from './InputFields/FcSearchInputField';
 
 import dataTableStyle from 'assets/styles/components/FsDataTable.module.css';
+import { FcDataTableProps } from '@/lib/definition/props';
 
-interface FcDataTableProps<T> {
-	data: Array<T> | null;
-	columns: Array<{ title: string; property: string }>;
-}
-
-const FcDataTable = <T extends object>({ data, columns }: FcDataTableProps<T>) => {
+const FcDataTable = <T extends object>(	{ data, columns }: FcDataTableProps<T>) => {
 	const router = useRouter();
 	const scrollPosition = useContext(ScrollContext);
 

@@ -1,4 +1,4 @@
-const DashboardSidebar = () => {
+const FcDashboardSidebar = () => {
 	return (
 		<aside
 			id='logo-sidebar'
@@ -128,4 +128,4 @@ const DashboardSidebar = () => {
 	);
 };
 
-export default DashboardSidebar;
+export default FcDashboardSidebar;
