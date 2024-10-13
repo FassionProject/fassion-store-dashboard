@@ -5,7 +5,7 @@ import FcButton from './FcButton';
 import { FeButtonStyleType } from '@/lib/enums';
 import FcSearchInputField from './InputFields/FcSearchInputField';
 
-import dataTableStyle from 'assets/styles/components/FsDataTable.module.css';
+import dataTableStyle from '@/styles/components/FsDataTable.module.css';
 import { FcDataTableProps } from '@/lib/definition/props';
 
 const FcDataTable = <T extends object>({ data, columns }: FcDataTableProps<T>) => {

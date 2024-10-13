@@ -4,7 +4,7 @@ import { notFoundAnimation } from '@/assets';
 import { FeButtonStyleType } from '@/lib/enums';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import FcButton from './(widgets)/shared/FcButton';
+import FcButton from './_shared/FcButton';
 
 const NotFound = () => {
 	const router = useRouter();

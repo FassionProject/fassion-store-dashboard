@@ -1,6 +1,7 @@
 'use client';
 
-import FcProductList from '@/app/(widgets)/layouts/product/FcProductList';
+import FcProductList from "./_components/FcProductList";
+
 
 const ProductListPage = () => {
 	return <FcProductList />;

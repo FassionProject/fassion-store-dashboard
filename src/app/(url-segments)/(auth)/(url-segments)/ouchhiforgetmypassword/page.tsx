@@ -1,4 +1,5 @@
-import FcForgetPassword from '@/app/(widgets)/layouts/auth/FcForgetPassword';
+import FcForgetPassword from "../../_components/FcForgetPassword";
+
 
 const ForgetPasswordPage = () => {
 	return <FcForgetPassword />;

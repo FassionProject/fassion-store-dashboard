@@ -1,4 +1,4 @@
-import inputElementStyle from 'assets/styles/components/FsInputFields.module.css';
+import inputElementStyle from '@/styles/components/FsInputFields.module.css';
 import { FInputComponentProps } from '@/lib/definition/props';
 import { useEffect, useState } from 'react';
 

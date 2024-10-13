@@ -1,35 +1,35 @@
-import inputElementStye from 'assets/styles/components/FsInputFields.module.css';
-import { FNumberOrCurrencyInputComponentProps } from '@/lib/definition/props';
+import inputElementStyle from '@/styles/components/FsInputFields.module.css';
+import { FInputComponentProps } from '@/lib/definition/props';
 import { useEffect, useState } from 'react';
 
-const FcNumberInputField = ({ label, name, placeholder, minValue, maxValue, isRequired, isDisabled, isReadonly, validationText }: FNumberOrCurrencyInputComponentProps) => {
+const FcDateInputFields = ({ label, placeholder, isRequired, isDisabled, isReadonly, validationText }: FInputComponentProps) => {
 	const [inputID, setInputID] = useState('');
+	const [name, setName] = useState('');
 
 	useEffect(() => {
 		const formattedLabel = label?.toLowerCase().split(' ').join('-') ?? '_default';
 
 		setInputID(formattedLabel.concat('-id'));
+		setName(formattedLabel.concat('-input'));
 	}, [inputID, label]);
 
 	return (
 		<div>
 			<label
 				htmlFor={`${name}-input-id`}
-				className={inputElementStye['input-label']}>
+				className={inputElementStyle['input-label']}>
 				{label} {isRequired ? '*' : ''}
 			</label>
 			<div className='relative'>
-				<div className={inputElementStye['input-icon']}>
-					<i className='fa-solid fa-arrow-up-9-1'></i>
+				<div className={inputElementStyle['input-icon']}>
+					<i className='fa-solid fa-calendar-days'></i>
 				</div>
 				<input
-					type='number'
+					type='date'
 					name={name}
 					id={`${name}-input-id`}
-					className={`${inputElementStye['input-field']} ${inputElementStye['number-input-field']}`}
-					placeholder={placeholder ?? ''}
-					min={minValue}
-					max={maxValue}
+					className={`${inputElementStyle['input-field']} ${inputElementStyle['date-input-field']}`}
+					placeholder={placeholder ?? 'Type here..'}
 					required={isRequired ?? false}
 					readOnly={isReadonly ?? false}
 					disabled={isDisabled ?? false}
@@ -45,4 +45,4 @@ const FcNumberInputField = ({ label, name, placeholder, minValue, maxValue, isRe
 	);
 };
 
-export default FcNumberInputField;
+export default FcDateInputFields;

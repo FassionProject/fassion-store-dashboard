@@ -1,4 +1,4 @@
-import FcDataTable from '@/app/(widgets)/shared/FcDataTable';
+import FcDataTable from '@/app/_shared/FcDataTable';
 import { loadingAnimation } from '@/assets';
 import { getProducts } from '@/data/product';
 import { ProductModel } from '@/lib/model';

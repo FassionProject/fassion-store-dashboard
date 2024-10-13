@@ -1,6 +1,6 @@
 import { FInputComponentProps } from '@/lib/definition/props';
 import { useEffect, useState } from 'react';
-import inputElementStyle from 'assets/styles/components/FsInputFields.module.css';
+import inputElementStyle from '@/styles/components/FsInputFields.module.css';
 
 const FcSearchInputField = ({ label, name, placeholder, icon, isRequired, isDisabled, isReadonly }: FInputComponentProps) => {
 	const [inputID, setInputID] = useState('');

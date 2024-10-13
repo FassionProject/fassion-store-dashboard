@@ -1,4 +1,4 @@
-import inputElementStyle from 'assets/styles/components/FsInputFields.module.css';
+import inputElementStyle from '@/styles/components/FsInputFields.module.css';
 import { FLookupInputComponentProps } from '@/lib/definition/props';
 
 const FcLookupInputField = ({ label, name, placeholder, icon, value, isRequired, isDisabled, validationText, clickFn }: FLookupInputComponentProps) => {

@@ -1,6 +1,6 @@
 import { FeButtonStyleType } from '@/lib/enums';
-import FcButton from '../../shared/FcButton';
-import FcTextInputField from '../../shared/InputFields/FcTextInputField';
+import FcButton from '../../_shared/FcButton';
+import FcTextInputField from '../../_shared/InputFields/FcTextInputField';
 
 const FcSignUp = () => {
 	return (

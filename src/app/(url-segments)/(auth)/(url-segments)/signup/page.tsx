@@ -1,4 +1,4 @@
-import FcSignUp from '@/app/(widgets)/layouts/auth/FcSignUp';
+import FcSignUp from '../../_components/FcSignUp';
 
 const SignUpPage = () => {
 	return <FcSignUp />;

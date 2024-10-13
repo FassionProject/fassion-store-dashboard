@@ -1,4 +1,4 @@
-import inputElementStyle from 'assets/styles/components/FsInputFields.module.css';
+import inputElementStyle from '@/styles/components/FsInputFields.module.css';
 import { FNumberOrCurrencyInputComponentProps } from '@/lib/definition/props';
 import { ChangeEvent, useEffect, useState } from 'react';
 
