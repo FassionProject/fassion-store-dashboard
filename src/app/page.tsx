@@ -1,7 +1,7 @@
 'use client';
 
 import { getProducts } from '@/services/product-service';
-import FcSignIn from '../(widgets)/layouts/auth/FcSignIn';
+import FcSignIn from './(widgets)/layouts/auth/FcSignIn';
 
 const Login = () => {
 	const redirectRoute = '/dashboard/product';

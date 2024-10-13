@@ -1,6 +1,5 @@
 import inputElementStyle from 'assets/styles/components/FsInputFields.module.css';
 import { FTextInputComponentProps } from '@/lib/definition/props';
-import { useEffect, useState } from 'react';
 
 const FcTextInputField = ({ label, name, placeholder, icon, minLength, maxLength, isRequired, isDisabled, isReadonly, validationText }: FTextInputComponentProps) => {
 	return (

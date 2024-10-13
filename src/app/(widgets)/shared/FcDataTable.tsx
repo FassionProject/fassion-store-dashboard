@@ -8,7 +8,7 @@ import FcSearchInputField from './InputFields/FcSearchInputField';
 import dataTableStyle from 'assets/styles/components/FsDataTable.module.css';
 import { FcDataTableProps } from '@/lib/definition/props';
 
-const FcDataTable = <T extends object>(	{ data, columns }: FcDataTableProps<T>) => {
+const FcDataTable = <T extends object>({ data, columns }: FcDataTableProps<T>) => {
 	const router = useRouter();
 	const scrollPosition = useContext(ScrollContext);
 

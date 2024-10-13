@@ -43,7 +43,7 @@ export type FcDataTableProps<T> = {
 	columns: Array<{ title: string; property: string }>;
 };
 
-export type FLookupInputComponentProps = FInputComponentProps  & {
-		value: string;
-		clickFn: (param: React.MouseEvent) => void;
-	};
+export type FLookupInputComponentProps = FInputComponentProps & {
+	value: string;
+	clickFn: (param: React.MouseEvent) => void;
+};

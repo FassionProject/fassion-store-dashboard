@@ -4,4 +4,6 @@ export enum FeButtonStyleType {
 	SUCCESS,
 	DANGER,
 	HELPER,
+	LINK,
+	FASSION_SIGNATURE
 }
